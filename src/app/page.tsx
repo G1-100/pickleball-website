@@ -31,6 +31,8 @@ export default function Page() {
                 width={250} 
                 height={300}
                 style={{ objectFit: 'contain' }}
+                priority={false}
+                loading="lazy"
             />
         </div>
     </section>

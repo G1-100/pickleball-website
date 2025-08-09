@@ -1,0 +1,254 @@
+.pageWrapper {
+  background-color: #87CEEB;
+  min-height: 100vh;
+  padding-top: 6rem; /* Navbar padding moved here */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 2rem 2rem; /* Removed top padding, kept horizontal */
+}
+
+.pageTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+.timeline {
+  position: relative;
+  margin: 2rem 0;
+  padding: 0;
+}
+
+/* Central vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    #007acc 0%,
+    #007acc 70%,
+    rgba(0, 122, 204, 0.5) 85%,
+    rgba(0, 122, 204, 0.2) 95%,
+    transparent 100%
+  );
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Dotted continuation at the end */
+.timeline::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2rem;
+  width: 4px;
+  height: 3rem;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 4px,
+    rgba(0, 122, 204, 0.3) 4px,
+    rgba(0, 122, 204, 0.3) 8px
+  );
+  transform: translateX(-50%);
+}
+
+.timelineItem {
+  position: relative;
+  margin: 3rem 0;
+  width: 100%;
+}
+
+/* Event cards */
+.eventCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  position: relative;
+  width: 45%;
+  transition: all 0.3s ease;
+}
+
+.eventCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Alternating positions */
+.timelineItem:nth-child(odd) .eventCard {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.timelineItem:nth-child(even) .eventCard {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Timeline dots */
+.timelineDot {
+  position: absolute;
+  top: 50%; /* Center vertically with the event card */
+  width: 16px;
+  height: 16px;
+  background: #007acc;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  transform: translateY(-50%);
+}
+
+/* Position dots differently for alternating cards */
+.timelineItem:nth-child(odd) .timelineDot {
+  left: calc(45% - 8px); /* Position at the right edge of left-side cards */
+}
+
+.timelineItem:nth-child(even) .timelineDot {
+  right: calc(45% - 8px); /* Position at the left edge of right-side cards */
+}
+
+/* Connecting lines from dot to card */
+.timelineItem:nth-child(odd) .timelineDot::before {
+  content: '';
+  position: absolute;
+  left: 16px; /* Connect from right side of dot to card */
+  top: 50%;
+  width: 30px;
+  height: 2px;
+  background: #007acc;
+  transform: translateY(-50%);
+}
+
+.timelineItem:nth-child(even) .timelineDot::before {
+  content: '';
+  position: absolute;
+  right: 16px; /* Connect from left side of dot to card */
+  top: 50%;
+  width: 30px;
+  height: 2px;
+  background: #007acc;
+  transform: translateY(-50%);
+}
+
+/* Connecting lines from dot to central timeline */
+.timelineItem:nth-child(odd) .timelineDot::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  width: calc(55% - 37px); /* Connect to center line */
+  height: 2px;
+  background: #007acc;
+  transform: translateY(-50%);
+}
+
+.timelineItem:nth-child(even) .timelineDot::after {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  width: calc(55% - 37px); /* Connect to center line */
+  height: 2px;
+  background: #007acc;
+  transform: translateY(-50%);
+}
+
+/* Event content styling */
+.eventTitle {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.eventDate {
+  font-size: 0.9rem;
+  color: #007acc;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.eventDescription {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Future events indicator */
+.futureEventsIndicator {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  color: #999;
+  font-style: italic;
+}
+
+.futureEventsIndicator::before {
+  content: '⋯';
+  display: block;
+  font-size: 2rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 6rem 1rem 2rem 1rem;
+  }
+  
+  .timeline::before {
+    left: 20px;
+  }
+  
+  .timelineItem:nth-child(odd) .eventCard,
+  .timelineItem:nth-child(even) .eventCard {
+    width: calc(100% - 60px);
+    margin-left: 60px;
+    margin-right: 0;
+  }
+  
+  .timelineDot {
+    left: 20px;
+    transform: translateX(-50%);
+  }
+  
+  .timelineItem:nth-child(odd) .timelineDot::before,
+  .timelineItem:nth-child(even) .timelineDot::before {
+    left: 20px;
+    right: auto;
+    width: 20px;
+  }
+  
+  .pageTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .eventCard {
+    padding: 1rem;
+  }
+  
+  .eventTitle {
+    font-size: 1.2rem;
+  }
+}

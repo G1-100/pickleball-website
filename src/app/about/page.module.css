@@ -1,0 +1,440 @@
+/* About Page Styles */
+.aboutContainer {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #3730a3 50%, #4338ca 75%, #6366f1 100%);
+  padding-top: 80px; /* Added padding for navbar */
+}
+
+/* Enhanced background circles for ombre effect */
+.aboutContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 15% 25%, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0.2) 30%, transparent 60%),
+    radial-gradient(circle at 85% 15%, rgba(139, 92, 246, 0.3) 0%, rgba(139, 92, 246, 0.15) 35%, transparent 65%),
+    radial-gradient(circle at 35% 65%, rgba(56, 189, 248, 0.5) 0%, rgba(56, 189, 248, 0.2) 25%, transparent 55%),
+    radial-gradient(circle at 90% 75%, rgba(99, 102, 241, 0.4) 0%, rgba(99, 102, 241, 0.15) 30%, transparent 60%),
+    radial-gradient(circle at 5% 85%, rgba(168, 85, 247, 0.3) 0%, rgba(168, 85, 247, 0.15) 35%, transparent 65%),
+    radial-gradient(circle at 60% 10%, rgba(147, 197, 253, 0.3) 0%, rgba(147, 197, 253, 0.08) 40%, transparent 70%),
+    radial-gradient(circle at 75% 50%, rgba(196, 181, 253, 0.3) 0%, rgba(196, 181, 253, 0.15) 30%, transparent 60%),
+    radial-gradient(circle at 25% 40%, rgba(125, 211, 252, 0.3) 0%, rgba(125, 211, 252, 0.08) 35%, transparent 65%);
+  z-index: 1;
+}
+
+/* Mission Section */
+.missionSection {
+  position: relative;
+  z-index: 2;
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.missionSection h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 60px;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #ffffff, #e0e7ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Mission Items */
+.missionItem {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 80px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  justify-content: space-between;
+}
+
+.missionItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Alternating layout */
+.missionItem:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.missionItem:nth-child(odd) {
+  flex-direction: row;
+}
+
+/* Content styling */
+.missionContent {
+  flex: 1;
+  padding: 20px;
+}
+
+.missionContent h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.missionContent p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Image container with blended edges */
+.imageContainer {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  max-width: 100%;
+}
+
+.imageContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(59, 130, 246, 0.1) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(139, 92, 246, 0.1) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.imageContainer img {
+  width: auto;
+  height: auto;
+  max-width: 400px;
+  max-height: 300px;
+  object-fit: contain;
+  filter: contrast(1.1) saturate(1.1);
+  display: block;
+}
+
+/* Blended edge effect */
+.imageContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(to right, rgba(30, 58, 138, 0.15) 0%, transparent 15%, transparent 85%, rgba(30, 58, 138, 0.15) 100%),
+    linear-gradient(to bottom, rgba(30, 58, 138, 0.1) 0%, transparent 15%, transparent 85%, rgba(30, 58, 138, 0.1) 100%);
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover states for image container */
+.missionItem:hover .imageContainer::before {
+  opacity: 0.7;
+}
+
+.missionItem:hover .imageContainer::after {
+  opacity: 0.5;
+}
+
+/* Team Section */
+.teamSection {
+  position: relative;
+  z-index: 2;
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 40px;
+}
+
+.teamSection h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.teamSection h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  margin-bottom: 50px;
+}
+
+/* E-Board Grid */
+.eboardGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* E-Board Member Card */
+.eboardMember {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.eboardMember:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Member Image */
+.memberImageContainer {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.memberImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.1) contrast(1.05);
+}
+
+/* Member Info */
+.memberName {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.memberTitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Competitive Team Section */
+.competitiveSection {
+  position: relative;
+  z-index: 2;
+  padding: 60px 20px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 40px;
+}
+
+.competitiveSection h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+}
+
+.competitiveCaption {
+  font-size: 1.4rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  padding: 40px 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .eboardGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .missionItem {
+    flex-direction: column !important;
+    gap: 30px;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .missionSection h1 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+
+  .missionContent h2 {
+    font-size: 2rem;
+  }
+
+  .missionContent p {
+    font-size: 1.1rem;
+  }
+
+  .imageContainer {
+    max-width: 100%;
+    align-self: center;
+  }
+
+  .imageContainer img {
+    max-width: 100%;
+    max-height: 250px;
+  }
+
+  .teamSection {
+    margin-top: 20px;
+    padding: 60px 20px;
+  }
+
+  .teamSection h1 {
+    font-size: 2.5rem;
+  }
+
+  .competitiveSection {
+    margin-top: 20px;
+    padding: 50px 20px 60px;
+  }
+
+  .competitiveSection h2 {
+    font-size: 2rem;
+  }
+
+  .competitiveCaption {
+    font-size: 1.2rem;
+    padding: 30px 15px;
+  }
+
+  /* E-Board responsive */
+  .eboardGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+
+  .memberImageContainer {
+    width: 100px;
+    height: 100px;
+  }
+
+  .memberName {
+    font-size: 1.2rem;
+  }
+
+  .memberTitle {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .missionSection {
+    padding: 60px 15px;
+  }
+
+  .missionSection h1 {
+    font-size: 2rem;
+  }
+
+  .missionContent h2 {
+    font-size: 1.8rem;
+  }
+
+  .missionContent p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .missionItem {
+    padding: 25px 15px;
+    margin-bottom: 60px;
+  }
+
+  .imageContainer img {
+    max-width: 100%;
+    max-height: 200px;
+  }
+
+  /* E-Board mobile */
+  .eboardGrid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .eboardMember {
+    padding: 20px;
+  }
+
+  .memberImageContainer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .memberName {
+    font-size: 1.1rem;
+  }
+
+  .memberTitle {
+    font-size: 0.9rem;
+  }
+
+  .competitiveSection {
+    margin-top: 15px;
+    padding: 40px 15px 50px;
+  }
+
+  .competitiveSection h2 {
+    font-size: 1.8rem;
+  }
+
+  .competitiveCaption {
+    font-size: 1.1rem;
+    padding: 25px 10px;
+  }
+}

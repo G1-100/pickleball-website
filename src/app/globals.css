@@ -35,6 +35,15 @@ a {
   text-decoration: none;
 }
 
+/* Utility class for navbar spacing */
+.page-container {
+  padding-top: 80px;
+}
+
+.page-content {
+  min-height: calc(100vh - 80px);
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

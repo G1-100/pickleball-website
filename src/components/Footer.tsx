@@ -1,0 +1,65 @@
+import Image from "next/image";
+import styles from './Footer.module.css';
+
+export default function Footer() {
+    return (
+        <footer className={styles.footer}>
+            <div className={styles.footerContent}>
+                <div className={styles.footerTop}>
+                    <div className={styles.footerLogo}>
+                        <Image 
+                            src="/images/footer_logo.png" 
+                            alt="Trojan Pickleball Club Logo"
+                            width={110} 
+                            height={110}
+                            style={{ objectFit: 'contain' }}
+                        />
+                    </div>
+                    <p className={styles.copyright}>© 2025 Trojan Pickleball Club. All rights reserved.</p>
+                </div>
+                <div className={styles.socialLinks}>
+                    <a 
+                        href="https://instagram.com/trojanpickleball" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        aria-label="Follow us on Instagram"
+                    >
+                        <Image 
+                            src="/images/instagram-logo.svg" 
+                            alt="Instagram" 
+                            width={32} 
+                            height={32}
+                            style={{ objectFit: 'contain' }}
+                        />
+                    </a>
+                    <a 
+                        href="mailto:trojanpickleball@usc.edu" 
+                        aria-label="Send us an email"
+                    >
+                        <Image 
+                            src="/images/gmail-icon.png" 
+                            alt="Email" 
+                            width={32} 
+                            height={32}
+                            style={{ objectFit: 'contain' }}
+                        />
+                    </a>
+                    <a 
+                        href="https://groupme.com/join_group/96038579/dmWghOg2" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        aria-label="Join our GroupMe"
+                    >
+                        <Image 
+                            src="/images/groupme-icon.png" 
+                            alt="GroupMe" 
+                            width={32} 
+                            height={32}
+                            style={{ objectFit: 'contain' }}
+                        />
+                    </a>
+                </div>
+            </div>
+        </footer>
+    );
+}

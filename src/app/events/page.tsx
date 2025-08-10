@@ -14,7 +14,7 @@ export default function Page() {
                             <h3 className={styles.eventTitle}>First Open Play</h3>
                             <p className={styles.eventDate}>August 25th, 2025 (8 PM - 10 PM)</p>
                             <p className={styles.eventDescription}>
-                                We'll be at the PHED Gym at Room 201 to kick off our open plays for this semester! We&apos;d  love to see you there, and have space for those who want destroy the competition or just want to relax.
+                                We will be at the PHED Gym at Room 201 to kick off our open plays for this semester! We&apos;d  love to see you there, and have space for those who want destroy the competition or just want to relax.
                             </p>
                         </div>
                     </div>

@@ -49,18 +49,43 @@
   border-radius: 8px;
   transition: all 0.3s ease;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Underline hover effect */
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  border-radius: 1px;
+}
+
+.navLink:hover::after {
+  transform: scaleX(1);
 }
 
 .navLink:hover {
   color: white;
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .navLink.active {
-  background: rgba(99, 102, 241, 0.3);
+  background: rgba(99, 102, 241, 0.2);
   color: white;
   box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+}
+
+/* Active page underline - always visible */
+.navLink.active::after {
+  transform: scaleX(1);
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
 }
 
 /* Hamburger Button */
@@ -143,14 +168,46 @@
   text-align: center;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
 }
 
-.mobileNavLink:hover,
+/* Mobile underline effect */
+.mobileNavLink::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+  border-radius: 1px;
+}
+
+.mobileNavLink:hover::after {
+  transform: scaleX(1);
+}
+
+.mobileNavLink:hover {
+  background: rgba(99, 102, 241, 0.2);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+}
+
 .mobileNavLink.active {
   background: rgba(99, 102, 241, 0.3);
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+}
+
+/* Active mobile page underline */
+.mobileNavLink.active::after {
+  transform: scaleX(1);
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
 }
 
 /* Responsive Design */

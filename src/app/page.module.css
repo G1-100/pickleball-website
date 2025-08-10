@@ -51,7 +51,7 @@
 
 .whoWeAreSection {
   padding: 4rem 2rem;
-  background-color: #f8f9fa;
+  background-color: #e3e1f9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -213,7 +213,7 @@
 /* Sponsors Section */
 .sponsorsSection {
   padding: 6rem 2rem 8rem 2rem;
-  background: linear-gradient(to bottom, #f8f9fa 0%, #e8eaed 100%);
+  background: #e3e1f9;
   text-align: center;
   min-height: 70vh;
   display: flex;

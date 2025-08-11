@@ -18,6 +18,7 @@ export default function Footer() {
                     <p className={styles.copyright}>© 2025 Trojan Pickleball Club. All rights reserved.</p>
                 </div>
                 <div className={styles.socialLinks}>
+                    <p>Contact Us:</p>
                     <a 
                         href="https://instagram.com/trojanpickleball" 
                         target="_blank" 

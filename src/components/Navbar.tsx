@@ -1,5 +1,6 @@
 "use client"; 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
@@ -17,9 +18,15 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       {/* Desktop menu always visible */}
       <div className={styles.desktopMenu}>
-        <Link href="/" className={styles.brand}>
+        <Image
+          src="/images/footer_logo.png"
+          alt="Trojan Pickleball Club"
+          width={50}
+          height={50}
+        />
+        {/* <Link href="/" className={styles.brand}>
           Trojan Pickleball Club
-        </Link>
+        </Link> */}
 
         <div className={styles.navLinks}>
           <Link href="/" className={`${styles.navLink} ${pathname === '/' ? styles.active : ''}`}>
@@ -32,7 +39,7 @@ export default function Navbar() {
             Events
           </Link>
           <Link href="/join" className={`${styles.navLink} ${pathname === '/join' ? styles.active : ''}`}>
-            Join Us
+            Get Involved
           </Link>
         </div>
       </div>

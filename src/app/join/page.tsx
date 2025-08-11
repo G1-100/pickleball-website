@@ -8,7 +8,7 @@ export default function Page() {
         <section className={styles.heroSection}>
             <h1 className={styles.heroTitle}>Get Involved with Trojan Pickleball</h1>
             <p className={styles.heroSubtitle}>
-                Join USC's fastest-growing club sport community. Whether you're a student, community member, 
+                Join USC&apos;s fastest-growing club sport community. Whether you&apos;re a student, community member, 
                 or potential sponsor, we have opportunities for everyone to be part of our growing family.
             </p>
             <div className={styles.heroStats}>

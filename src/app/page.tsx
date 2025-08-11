@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from './page.module.css';
 
 export default function Page() {
@@ -75,6 +76,12 @@ export default function Page() {
                     style={{ objectFit: 'contain' }}
                 />
             </div>
+            <Link href="/join#sponsors" className={styles.becomeSponsorButton}>
+                <div className={styles.sponsorLogo}>
+                    <div className={styles.plusIcon}>+</div>
+                    <span className={styles.becomeSponsorText}>Become a Sponsor</span>
+                </div>
+            </Link>
         </div>
     </section>
     </>

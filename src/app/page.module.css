@@ -281,6 +281,46 @@
   filter: grayscale(0%);
 }
 
+/* Become a Sponsor Button */
+.becomeSponsorButton {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+}
+
+.becomeSponsorButton .sponsorLogo {
+  background: #91a5e6;
+  color: white;
+  border: 3px rgba(255, 255, 255, 0.3);
+  flex-direction: column;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.becomeSponsorButton:hover .sponsorLogo {
+  background: #3a8ed2;
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-10px) scale(1.05) rotate(0deg);
+  box-shadow: 0 15px 35px rgba(30, 58, 138, 0.3);
+}
+
+.plusIcon {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #fbbf24;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.becomeSponsorText {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 @media (max-width: 768px) {
   .sponsorsSection {
     padding: 4rem 1rem 6rem 1rem;

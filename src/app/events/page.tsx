@@ -70,12 +70,17 @@ export default function Page() {
                 </div>
             </div>
 
-            <h2>General Events</h2>
-            <h3>Open Play Sessions</h3>
-            <p>Mondays and Wednesdays</p>
-            <p>We host weekly pickleball sessions at the PHED Gym in the evenings. We welcome you to join us as we unwind from our classes, meet new friends, and enjoy some friendly competition.</p>
-
-            <h3></h3>
+            <div className={styles.generalEventsSection}>
+                <h2 className={styles.generalEventsTitle}>General Events</h2>
+                
+                <div className={styles.generalEventCard}>
+                    <h3 className={styles.generalEventTitle}>Open Play Sessions</h3>
+                    <p className={styles.generalEventSchedule}>Mondays and Wednesdays</p>
+                    <p className={styles.generalEventDescription}>
+                        We host weekly pickleball sessions at the PHED Gym in the evenings. We welcome you to join us as we unwind from our classes, meet new friends, and enjoy some friendly competition.
+                    </p>
+                </div>
+            </div>
 
         </div>
     )

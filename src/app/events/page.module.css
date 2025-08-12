@@ -205,10 +205,75 @@
   margin-bottom: 0.5rem;
 }
 
+/* General Events Section */
+.generalEventsSection {
+  margin-top: 4rem;
+  padding: 3rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.generalEventsTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.generalEventCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.generalEventTitle {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.generalEventSchedule {
+  font-size: 0.9rem;
+  color: #007acc;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.generalEventDescription {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.futureEventsIndicator::before {
+  content: '⋯';
+  display: block;
+  font-size: 2rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
+  .pageWrapper {
+    padding-top: 5rem;
+  }
+  
   .container {
-    padding: 6rem 1rem 2rem 1rem;
+    padding: 0 1rem 2rem 1rem;
+  }
+  
+  .pageTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
   
   .timeline::before {
@@ -234,21 +299,94 @@
     width: 20px;
   }
   
-  .pageTitle {
-    font-size: 2rem;
+  .timelineItem:nth-child(odd) .timelineDot::after,
+  .timelineItem:nth-child(even) .timelineDot::after {
+    display: none;
+  }
+  
+  .generalEventsSection {
+    margin-top: 3rem;
+    padding: 2rem 0;
+  }
+  
+  .generalEventsTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .generalEventCard {
+    padding: 1.5rem;
+    margin: 0 1rem;
   }
 }
 
 @media (max-width: 480px) {
+  .pageWrapper {
+    padding-top: 4rem;
+  }
+  
   .container {
-    padding: 1rem;
+    padding: 0 0.5rem 1rem 0.5rem;
+  }
+  
+  .pageTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
   }
   
   .eventCard {
     padding: 1rem;
+    width: calc(100% - 50px);
+    margin-left: 50px;
   }
   
   .eventTitle {
     font-size: 1.2rem;
+  }
+  
+  .eventDate {
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .eventDescription {
+    font-size: 0.9rem;
+  }
+  
+  .timeline::before {
+    left: 15px;
+  }
+  
+  .timelineDot {
+    left: 15px;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .generalEventsSection {
+    margin-top: 2rem;
+    padding: 1.5rem 0;
+  }
+  
+  .generalEventsTitle {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  .generalEventCard {
+    padding: 1rem;
+    margin: 0 0.5rem;
+  }
+  
+  .generalEventTitle {
+    font-size: 1.2rem;
+  }
+  
+  .generalEventSchedule {
+    font-size: 0.8rem;
+  }
+  
+  .generalEventDescription {
+    font-size: 0.9rem;
   }
 }

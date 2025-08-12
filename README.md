@@ -1,3 +1,9 @@
+Trojan Pickleball Club is a Recognized Student Organization (RSO) at the University of Southern California (USC). We represent the rapidly-growing pickleball community there, organizing tournaments, open plays, and a competitive team. This website is intended to help students and sponsors alike learn more about the club and what we do.
+
+Made with the help of GitHub Copilot/Claude.
+
+--------------------------------------------------------
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

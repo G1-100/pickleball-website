@@ -6,8 +6,10 @@ export default function Page() {
     return (
     <>
     <div className={styles.heroSection}>
-        <h1 className={styles.title}>Trojan Pickleball Club</h1>
-        <p className={styles.description}>Welcome to the Trojan Pickleball Club! We are a community of pickleball enthusiasts.</p>
+        <div className={styles.content}>
+            <h1 className={styles.title}>Trojan Pickleball Club</h1>
+            <p className={styles.description}>Battle hard. Bond harder. Belong here.</p>
+        </div>
     </div>
     <section className={styles.whoWeAreSection}>
         <div className={`${styles.whoWeAreImage} ${styles.leftImageLarge}`}>

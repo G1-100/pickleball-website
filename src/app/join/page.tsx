@@ -21,7 +21,7 @@ export default function Page() {
                     <span className={styles.statLabel}>GroupMe Members</span>
                 </div>
                 <div className={styles.stat}>
-                    <span className={styles.statNumber}>4+</span>
+                    <span className={styles.statNumber}>4</span>
                     <span className={styles.statLabel}>Sponsor Partners</span>
                 </div>
             </div>
@@ -35,7 +35,7 @@ export default function Page() {
                 <p className={styles.featureDescription}>
                     Join our vibrant digital community and stay connected with fellow players
                 </p>
-                <button className={styles.featureButton}>Follow Us</button>
+                <a href="#online" className={styles.featureButton}>Follow Us</a>
             </div>
             
             <div className={styles.featureBox}>
@@ -44,7 +44,7 @@ export default function Page() {
                 <p className={styles.featureDescription}>
                     From beginner to competitive player, find your place in our club
                 </p>
-                <button className={styles.featureButton}>Join Now</button>
+                <a href="#students" className={styles.featureButton}>Join Now</a>
             </div>
             
             <div className={styles.featureBox}>
@@ -53,7 +53,7 @@ export default function Page() {
                 <p className={styles.featureDescription}>
                     Partner with us and reach an engaged student athlete community
                 </p>
-                <button className={styles.featureButton}>Partner With Us</button>
+                <a href="#sponsors" className={styles.featureButton}>Partner With Us</a>
             </div>
         </section>
 

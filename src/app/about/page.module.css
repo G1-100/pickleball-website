@@ -3,7 +3,7 @@
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #3730a3 50%, #4338ca 75%, #6366f1 100%);
+  background: #87CEEB;
   padding-top: 80px; /* Added padding for navbar */
 }
 
@@ -15,15 +15,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(circle at 15% 25%, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0.2) 30%, transparent 60%),
-    radial-gradient(circle at 85% 15%, rgba(139, 92, 246, 0.3) 0%, rgba(139, 92, 246, 0.15) 35%, transparent 65%),
-    radial-gradient(circle at 35% 65%, rgba(56, 189, 248, 0.5) 0%, rgba(56, 189, 248, 0.2) 25%, transparent 55%),
-    radial-gradient(circle at 90% 75%, rgba(99, 102, 241, 0.4) 0%, rgba(99, 102, 241, 0.15) 30%, transparent 60%),
-    radial-gradient(circle at 5% 85%, rgba(168, 85, 247, 0.3) 0%, rgba(168, 85, 247, 0.15) 35%, transparent 65%),
-    radial-gradient(circle at 60% 10%, rgba(147, 197, 253, 0.3) 0%, rgba(147, 197, 253, 0.08) 40%, transparent 70%),
-    radial-gradient(circle at 75% 50%, rgba(196, 181, 253, 0.3) 0%, rgba(196, 181, 253, 0.15) 30%, transparent 60%),
-    radial-gradient(circle at 25% 40%, rgba(125, 211, 252, 0.3) 0%, rgba(125, 211, 252, 0.08) 35%, transparent 65%);
   z-index: 1;
 }
 
@@ -41,12 +32,10 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: 60px;
-  color: white;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(135deg, #ffffff, #e0e7ff);
+  color: #1a365d;
+  background: linear-gradient(135deg, #1a365d, #2c5f7a);
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 /* Mission Items */
@@ -56,13 +45,46 @@
   gap: 60px;
   margin-bottom: 80px;
   padding: 40px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(74, 144, 226, 0.15);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   justify-content: space-between;
+}
+
+/* Animation states */
+.slideInHidden {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Initial hidden state - slide in from respective sides */
+.slideFromLeft.slideInHidden:not(.hasBeenVisible) {
+  transform: translateX(-100px) scale(0.9);
+}
+
+.slideFromRight.slideInHidden:not(.hasBeenVisible) {
+  transform: translateX(100px) scale(0.9);
+}
+
+/* Exit state - slide out to opposite sides */
+.slideFromLeft.slideInHidden.hasBeenVisible {
+  transform: translateX(100px) scale(0.9);
+  transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.slideFromRight.slideInHidden.hasBeenVisible {
+  transform: translateX(-100px) scale(0.9);
+  transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.slideInVisible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .missionItem:hover {
@@ -89,15 +111,15 @@
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 20px;
-  color: white;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  color: #1a365d;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .missionContent p {
   font-size: 1.2rem;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  color: #2d4a66;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Image container with blended edges */
@@ -173,10 +195,10 @@
   padding: 80px 20px;
   max-width: 1200px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(74, 144, 226, 0.15);
   backdrop-filter: blur(15px);
   border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   margin-top: 40px;
 }
 
@@ -185,16 +207,16 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: 40px;
-  color: white;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  color: #1a365d;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .teamSection h2 {
   font-size: 2rem;
   font-weight: 600;
   text-align: center;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  color: #2d4a66;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 50px;
 }
 
@@ -247,16 +269,16 @@
 .memberName {
   font-size: 1.3rem;
   font-weight: 600;
-  color: white;
+  color: #1a365d;
   margin-bottom: 8px;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .memberTitle {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: #2d4a66;
   font-weight: 400;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Competitive Team Section */
@@ -266,10 +288,10 @@
   padding: 60px 20px 80px;
   max-width: 1200px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(74, 144, 226, 0.15);
   backdrop-filter: blur(15px);
   border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   margin-top: 40px;
 }
 
@@ -277,17 +299,17 @@
   font-size: 2.5rem;
   font-weight: 600;
   text-align: center;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  color: #1a365d;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
 }
 
 .competitiveCaption {
   font-size: 1.4rem;
   text-align: center;
-  color: rgba(255, 255, 255, 0.7);
+  color: #2d4a66;
   font-style: italic;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 40px 20px;
 }
 
@@ -305,6 +327,23 @@
     gap: 30px;
     padding: 30px 20px;
     text-align: center;
+  }
+
+  /* Reduce animation distance on mobile for better UX */
+  .slideFromLeft.slideInHidden:not(.hasBeenVisible) {
+    transform: translateX(-60px) scale(0.9);
+  }
+
+  .slideFromRight.slideInHidden:not(.hasBeenVisible) {
+    transform: translateX(60px) scale(0.9);
+  }
+
+  .slideFromLeft.slideInHidden.hasBeenVisible {
+    transform: translateX(60px) scale(0.9);
+  }
+
+  .slideFromRight.slideInHidden.hasBeenVisible {
+    transform: translateX(-60px) scale(0.9);
   }
 
   .missionSection h1 {

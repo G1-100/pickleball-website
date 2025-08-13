@@ -15,7 +15,7 @@
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 3rem;
-  color: #333;
+  color: #1a365d;
 }
 
 .timeline {
@@ -34,10 +34,10 @@
   height: 100%;
   background: linear-gradient(
     to bottom,
-    #007acc 0%,
-    #007acc 70%,
-    rgba(0, 122, 204, 0.5) 85%,
-    rgba(0, 122, 204, 0.2) 95%,
+    #4a90e2 0%,
+    #4a90e2 70%,
+    rgba(74, 144, 226, 0.5) 85%,
+    rgba(74, 144, 226, 0.2) 95%,
     transparent 100%
   );
   transform: translateX(-50%);
@@ -56,8 +56,8 @@
     to bottom,
     transparent 0px,
     transparent 4px,
-    rgba(0, 122, 204, 0.3) 4px,
-    rgba(0, 122, 204, 0.3) 8px
+    rgba(74, 144, 226, 0.3) 4px,
+    rgba(74, 144, 226, 0.3) 8px
   );
   transform: translateX(-50%);
 }
@@ -102,7 +102,7 @@
   top: 50%; /* Center vertically with the event card */
   width: 16px;
   height: 16px;
-  background: #007acc;
+  background: #4a90e2;
   border: 4px solid #fff;
   border-radius: 50%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -127,7 +127,7 @@
   top: 50%;
   width: 30px;
   height: 2px;
-  background: #007acc;
+  background: #4a90e2;
   transform: translateY(-50%);
 }
 
@@ -138,7 +138,7 @@
   top: 50%;
   width: 30px;
   height: 2px;
-  background: #007acc;
+  background: #4a90e2;
   transform: translateY(-50%);
 }
 
@@ -150,7 +150,7 @@
   top: 50%;
   width: calc(55% - 37px); /* Connect to center line */
   height: 2px;
-  background: #007acc;
+  background: #4a90e2;
   transform: translateY(-50%);
 }
 
@@ -161,7 +161,7 @@
   top: 50%;
   width: calc(55% - 37px); /* Connect to center line */
   height: 2px;
-  background: #007acc;
+  background: #4a90e2;
   transform: translateY(-50%);
 }
 
@@ -169,13 +169,13 @@
 .eventTitle {
   font-size: 1.4rem;
   font-weight: bold;
-  color: #333;
+  color: #1a365d;
   margin-bottom: 0.5rem;
 }
 
 .eventDate {
   font-size: 0.9rem;
-  color: #007acc;
+  color: #4a90e2;
   font-weight: 600;
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -183,7 +183,7 @@
 }
 
 .eventDescription {
-  color: #666;
+  color: #2d4a66;
   line-height: 1.6;
   font-size: 0.95rem;
 }
@@ -217,7 +217,7 @@
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 2rem;
-  color: #333;
+  color: #1a365d;
 }
 
 .generalEventCard {
@@ -233,13 +233,13 @@
 .generalEventTitle {
   font-size: 1.4rem;
   font-weight: bold;
-  color: #333;
+  color: #1a365d;
   margin-bottom: 0.5rem;
 }
 
 .generalEventSchedule {
   font-size: 0.9rem;
-  color: #007acc;
+  color: #4a90e2;
   font-weight: 600;
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -247,7 +247,7 @@
 }
 
 .generalEventDescription {
-  color: #666;
+  color: #2d4a66;
   line-height: 1.6;
   font-size: 0.95rem;
   margin: 0;

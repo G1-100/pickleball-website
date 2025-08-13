@@ -1,5 +1,56 @@
+'use client';
+
 import Image from "next/image";
 import styles from './page.module.css';
+import { useEffect, useRef, useState } from 'react';
+
+const MissionCard = ({ children, index }: { children: React.ReactNode, index: number }) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const [hasBeenVisible, setHasBeenVisible] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    setHasBeenVisible(true);
+                } else {
+                    setIsVisible(false);
+                }
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            }
+        );
+
+        if (cardRef.current) {
+            observer.observe(cardRef.current);
+        }
+
+        return () => {
+            if (cardRef.current) {
+                observer.unobserve(cardRef.current);
+            }
+        };
+    }, []);
+
+    const slideDirection = index % 2 === 0 ? 'left' : 'right';
+    const animationDelay = isVisible ? index * 0.1 : 0; // Only delay on entrance
+
+    return (
+        <div 
+            ref={cardRef}
+            className={`${styles.missionItem} ${isVisible ? styles.slideInVisible : styles.slideInHidden} ${styles[`slideFrom${slideDirection.charAt(0).toUpperCase() + slideDirection.slice(1)}`]} ${hasBeenVisible ? styles.hasBeenVisible : ''}`}
+            style={{
+                transitionDelay: `${animationDelay}s`
+            }}
+        >
+            {children}
+        </div>
+    );
+};
 
 export default function Page() {
     return (
@@ -7,7 +58,7 @@ export default function Page() {
             <section className={styles.missionSection}>
                 <h1>Our Mission</h1>
                 
-                <div className={styles.missionItem}>
+                <MissionCard index={0}>
                     <div className={styles.missionContent}>
                         <h2>Wellness</h2>
                         <p>Pickleball keeps us moving, laughing, and connected. We believe in building healthy habits that last, whether that is breaking a sweat on the court or sharing a snack after practice. After all, maintaining mental and physical health is a lifelong journey.</p>
@@ -20,9 +71,9 @@ export default function Page() {
                             height={300}
                         />
                     </div>
-                </div>
+                </MissionCard>
 
-                <div className={styles.missionItem}>
+                <MissionCard index={1}>
                     <div className={styles.missionContent}>
                         <h2>Growth</h2>
                         <p>We&apos;re all about growth on and off the court. Pickleball is a game of skill, strategy, and continuous improvement. Over time, we aspire to move a little faster, aim with better intention, and plan with longer forethought.</p>
@@ -35,9 +86,9 @@ export default function Page() {
                             height={300}
                         />
                     </div>
-                </div>
+                </MissionCard>
 
-                <div className={styles.missionItem}>
+                <MissionCard index={2}>
                     <div className={styles.missionContent}>
                         <h2>Fun</h2>
                         <p>Fun is at the heart of pickleball. We play hard, but we also know how to have a good time. With plenty of open plays and casual tournaments, we create an environment where everyone can enjoy the game.</p>
@@ -50,9 +101,9 @@ export default function Page() {
                             height={300}
                         />
                     </div>
-                </div>
+                </MissionCard>
 
-                <div className={styles.missionItem}>
+                <MissionCard index={3}>
                     <div className={styles.missionContent}>
                         <h2>Competition</h2>
                         <p>We embrace competition as a way to challenge ourselves and each other. Our competitive team travels the nation, playing with passion and determination against other universities; no matter the outcome, we always rise up and support one another.</p>
@@ -65,7 +116,7 @@ export default function Page() {
                             height={300}
                         />
                     </div>
-                </div>
+                </MissionCard>
             </section>
 
             <section className={styles.teamSection}>

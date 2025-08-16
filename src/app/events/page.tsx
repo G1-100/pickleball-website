@@ -1,6 +1,8 @@
+import React from 'react';
 import styles from './page.module.css';
 
 export default function Page() {
+
     return (
         <div className={styles.pageWrapper}>
             <div className={styles.container}>
@@ -46,10 +48,9 @@ export default function Page() {
                         <div className={styles.timelineDot}></div>
                         <div className={styles.eventCard}>
                             <h3 className={styles.eventTitle}>Fall Tryouts</h3>
-                            <p className={styles.eventDate}>August 30th, 2025</p>
+                            <p className={styles.eventDate}>August 30th, 2025 (11 AM - 3 PM)</p>
                             <p className={styles.eventDescription}>
-                                It&apos;s the big day! This is your opportunity to showcase your skills and join our 
-                                competition team and take your game to the next level.
+                                It&apos;s the big day! Come to Powerplay at 19401 Main St, Carson, CA 90248 ($10 upfront fee) to tryout for our competitive team. This is your opportunity to showcase your skills, so make sure to bring your waterbottle, tennis shoes, and paddles. There are $10 demo paddles if needed.
                             </p>
                         </div>
                     </div>
@@ -70,15 +71,110 @@ export default function Page() {
                 </div>
             </div>
 
-            <div className={styles.generalEventsSection}>
-                <h2 className={styles.generalEventsTitle}>General Events</h2>
+            <div className={styles.recurringEventsSection}>
+                <h2 className={styles.sectionTitle}>Recurring Events</h2>
+                <p className={styles.sectionSubtitle}>Join us for our regular weekly activities</p>
                 
-                <div className={styles.generalEventCard}>
-                    <h3 className={styles.generalEventTitle}>Open Play Sessions</h3>
-                    <p className={styles.generalEventSchedule}>Mondays and Wednesdays</p>
-                    <p className={styles.generalEventDescription}>
-                        We host weekly pickleball sessions at the PHED Gym in the evenings. We welcome you to join us as we unwind from our classes, meet new friends, and enjoy some friendly competition.
-                    </p>
+                <div className={styles.recurringEventsGrid}>
+                    <div className={styles.recurringEventCard}>
+                        <div className={styles.eventCardHeader}>
+                            <h3 className={styles.recurringEventTitle}>Open Recreation</h3>
+                            {/* <div className={`${styles.eventTypeBadge} ${styles.openRec}`}>
+                                Drop-in Welcome
+                            </div> */}
+                        </div>
+                        
+                        <div className={styles.eventSchedule}>
+                            <div className={styles.scheduleItem}>
+                                <span className={styles.dayLabel}>Monday - Friday</span>
+                                <span className={styles.timeLabel}>11:00 AM - 2:00 PM</span>
+                            </div>
+                            <div className={styles.scheduleItem}>
+                                <span className={styles.dayLabel}>Saturday</span>
+                                <span className={styles.timeLabel}>4:00 PM - 7:00 PM</span>
+                            </div>
+                        </div>
+                        
+                        <p className={styles.eventDescription}>
+                            Join us for casual pickleball! All skills levels are welcome, and we provide new players a friendly, supportive environment.
+                        </p>
+                        
+                        <div className={styles.eventLocation}>
+                            <span className={styles.locationIcon}>📍</span>
+                            <span>Lyon Center Court C</span>
+                        </div>
+                    </div>
+
+                    <div className={styles.recurringEventCard}>
+                        <div className={styles.eventCardHeader}>
+                            <h3 className={styles.recurringEventTitle}>Intramural League</h3>
+                            {/* <div className={`${styles.eventTypeBadge} ${styles.intramural}`}>
+                                Competitive
+                            </div> */}
+                        </div>
+                        
+                        <div className={styles.eventSchedule}>
+                            <div className={styles.scheduleItem}>
+                                <span className={styles.dayLabel}>Monday - Wednesday</span>
+                                <span className={styles.timeLabel}>5:00 PM - 11:00 PM</span>
+                            </div>
+                            
+                        </div>
+                        
+                        <p className={styles.eventDescription}>
+                            Competitive tournament organized by Recreational Sports. New players are encouraged to join, so pair up with your friends; registration instructions can be found at https://recsports.usc.edu/programs-and-classes/competitive-sports/intramural-sports/.
+                        </p>
+                        
+                        <div className={styles.eventLocation}>
+                            <span className={styles.locationIcon}>📍</span>
+                            <span>Lyon Center Court C</span>
+                        </div>
+                        
+                        <div className={styles.eventNote}>
+                            <span className={styles.noteIcon}>🗓</span>
+                            <span>Lasts 9/8 - 10/13 </span>
+                        </div>
+                    </div>
+
+                    <div className={styles.recurringEventCard}>
+                        <div className={styles.eventCardHeader}>
+                            <h3 className={styles.recurringEventTitle}>Club Practice</h3>
+                            {/* <div className={`${styles.eventTypeBadge} ${styles.clubPractice}`}>
+                                Team Training
+                            </div> */}
+                        </div>
+                        
+                        <div className={styles.eventSchedule}>
+                            <div className={styles.scheduleItem}>
+                                <span className={styles.dayLabel}>Monday</span>
+                                <span className={styles.timeLabel}>8:00 PM - 10:00 PM</span>
+                            </div>
+                            <div className={styles.scheduleItem}>
+                                <span className={styles.dayLabel}>Wednesday</span>
+                                <span className={styles.timeLabel}>9:00 PM - 11:00 PM</span>
+                            </div>
+                        </div>
+                        
+                        <p className={styles.eventDescription}>
+                            Structured training sessions for our competitive team members. Focus on advanced techniques, 
+                            strategy, and tournament preparation. Tryouts required to join.
+                        </p>
+                        
+                        <div className={styles.eventLocation}>
+                            <span className={styles.locationIcon}>📍</span>
+                            <span>PE South Gym (Room 201)</span>
+                        </div>
+                        
+                        <div className={styles.eventNote}>
+                            <span className={styles.noteIcon}>🏆</span>
+                            <span>Tryouts required - see upcoming events above</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div className={styles.generalNote}>
+                    <span className={styles.noteIcon}>📍</span>
+                    <span><strong>Location Updates:</strong> Check <a style={{ color: 'blue' }} href="https://groupme.com/join_group/96038579/dmWghOg2" target="_blank" rel="noopener noreferrer">GroupMe</a> for any last-minute changes to locations or times</span>
                 </div>
             </div>
 

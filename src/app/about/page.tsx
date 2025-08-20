@@ -127,8 +127,8 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/placeholder person.jpg" 
-                                alt="Alex Han" 
+                                src="/images/people/placeholder person.jpg" 
+                                alt="Alex Han"
                                 width={120} 
                                 height={120}
                             />
@@ -140,7 +140,7 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/placeholder person.jpg" 
+                                src="/images/people/placeholder person.jpg" 
                                 alt="Kyle Kim" 
                                 width={120} 
                                 height={120}
@@ -153,7 +153,7 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/placeholder person.jpg" 
+                                src="/images/people/jonathan park.png" 
                                 alt="Jonathan Park" 
                                 width={120} 
                                 height={120}
@@ -166,7 +166,7 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/placeholder person.jpg" 
+                                src="/images/people/placeholder person.jpg" 
                                 alt="Chris Shin" 
                                 width={120} 
                                 height={120}
@@ -179,7 +179,7 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/placeholder person.jpg" 
+                                src="/images/people/placeholder person.jpg" 
                                 alt="An Duong" 
                                 width={120} 
                                 height={120}
@@ -192,7 +192,7 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/placeholder person.jpg" 
+                                src="/images/people/gavin huang.jpeg" 
                                 alt="Gavin Huang" 
                                 width={120} 
                                 height={120}
@@ -205,7 +205,7 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/placeholder person.jpg" 
+                                src="/images/people/ty valencia.png" 
                                 alt="Ty Valencia" 
                                 width={120} 
                                 height={120}
@@ -218,7 +218,7 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/placeholder person.jpg" 
+                                src="/images/people/lindsey ho.JPEG" 
                                 alt="Lindsey Ho" 
                                 width={120} 
                                 height={120}
@@ -231,7 +231,7 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/placeholder person.jpg" 
+                                src="/images/people/placeholder person.jpg" 
                                 alt="Anthony Yi" 
                                 width={120} 
                                 height={120}
@@ -244,7 +244,7 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/placeholder person.jpg" 
+                                src="/images/people/tyfanny vu.jpeg" 
                                 alt="Tyffany Vu" 
                                 width={120} 
                                 height={120}
@@ -257,7 +257,7 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/placeholder person.jpg" 
+                                src="/images/people/ryan tak.jpeg" 
                                 alt="Ryan Tak" 
                                 width={120} 
                                 height={120}

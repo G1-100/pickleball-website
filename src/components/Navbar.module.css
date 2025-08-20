@@ -34,6 +34,25 @@
   margin: 0 auto;
 }
 
+.logoCircle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logoCircle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
 .navLinks {
   display: flex;
   gap: 40px;
@@ -86,6 +105,16 @@
 .navLink.active::after {
   transform: scaleX(1);
   background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+}
+
+/* Special styling for Get Involved button */
+.getInvolvedBtn {
+  color: #3b4aee !important; /* Rose color - use !important to override other styles */
+  font-weight: 600;
+}
+
+.getInvolvedBtn:hover {
+  color: #1f1595 !important; /* Darker rose on hover */
 }
 
 /* Hamburger Button */

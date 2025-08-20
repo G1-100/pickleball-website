@@ -18,12 +18,15 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       {/* Desktop menu always visible */}
       <div className={styles.desktopMenu}>
-        <Image
-          src="/images/footer_logo.png"
-          alt="Trojan Pickleball Club"
-          width={50}
-          height={50}
-        />
+        <div className={styles.logoCircle}>
+          <Image
+            src="/images/club_logo.jpg"
+            alt="Trojan Pickleball Club"
+            width={50}
+            height={50}
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
         {/* <Link href="/" className={styles.brand}>
           Trojan Pickleball Club
         </Link> */}
@@ -38,8 +41,8 @@ export default function Navbar() {
           <Link href="/events" className={`${styles.navLink} ${pathname === '/events' ? styles.active : ''}`}>
             Events
           </Link>
-          <Link href="/join" className={`${styles.navLink} ${pathname === '/join' ? styles.active : ''}`}>
-            Get Involved
+          <Link href="/join" className={`${styles.navLink} ${styles.getInvolvedBtn} ${pathname === '/join' ? styles.active : ''}`}>
+            Follow Us
           </Link>
         </div>
       </div>

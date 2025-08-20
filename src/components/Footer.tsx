@@ -7,13 +7,15 @@ export default function Footer() {
             <div className={styles.footerContent}>
                 <div className={styles.footerTop}>
                     <div className={styles.footerLogo}>
-                        <Image 
-                            src="/images/footer_logo.png" 
-                            alt="Trojan Pickleball Club Logo"
-                            width={110} 
-                            height={110}
-                            style={{ objectFit: 'contain' }}
-                        />
+                        <div className={styles.logoCircle}>
+                            <Image 
+                                src="/images/club_logo.jpg" 
+                                alt="Trojan Pickleball Club Logo"
+                                width={110} 
+                                height={110}
+                                style={{ objectFit: 'cover' }}
+                            />
+                        </div>
                     </div>
                     <p className={styles.copyright}>© 2025 Trojan Pickleball Club. All rights reserved.</p>
                 </div>

@@ -127,7 +127,7 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/people/placeholder person.jpg" 
+                                src="/images/people/alex han.jpeg" 
                                 alt="Alex Han"
                                 width={120} 
                                 height={120}
@@ -140,8 +140,8 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/people/placeholder person.jpg" 
-                                alt="Kyle Kim" 
+                                src="/images/people/kyle kim.JPG" 
+                                alt="Kyle Kim"
                                 width={120} 
                                 height={120}
                             />
@@ -166,7 +166,7 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/people/placeholder person.jpg" 
+                                src="/images/people/chris shin.jpeg" 
                                 alt="Chris Shin" 
                                 width={120} 
                                 height={120}
@@ -179,7 +179,7 @@ export default function Page() {
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/people/placeholder person.jpg" 
+                                src="/images/people/an duong.jpeg" 
                                 alt="An Duong" 
                                 width={120} 
                                 height={120}

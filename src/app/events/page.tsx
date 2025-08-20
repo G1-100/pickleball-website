@@ -48,9 +48,11 @@ export default function Page() {
                         <div className={styles.timelineDot}></div>
                         <div className={styles.eventCard}>
                             <h3 className={styles.eventTitle}>Fall Tryouts</h3>
-                            <p className={styles.eventDate}>August 30th, 2025 (11 AM - 3 PM)</p>
+                            <p className={styles.eventDate}>August 31st, 2025 (3 PM - 6 PM)</p>
                             <p className={styles.eventDescription}>
                                 It&apos;s the big day! Come to Powerplay at 19401 Main St, Carson, CA 90248 ($10 upfront fee) to tryout for our competitive team. This is your opportunity to showcase your skills, so make sure to bring your waterbottle, tennis shoes, and paddles. There are $10 demo paddles if needed.
+
+                                Format: 3:00 - 4:30 First Round; 4:30 - 6:00 Second Round (Invite Only)
                             </p>
                         </div>
                     </div>
@@ -96,7 +98,7 @@ export default function Page() {
                         </div>
                         
                         <p className={styles.eventDescription}>
-                            Join us for casual pickleball! All skills levels are welcome, and we provide new players a friendly, supportive environment.
+                            Join us for casual pickleball! All skills levels are welcome, and we will set up the nets and courts. No tryouts required.
                         </p>
                         
                         <div className={styles.eventLocation}>
@@ -136,12 +138,9 @@ export default function Page() {
                         </div>
                     </div>
 
-                    <div className={styles.recurringEventCard}>
+                    {/* <div className={styles.recurringEventCard}>
                         <div className={styles.eventCardHeader}>
                             <h3 className={styles.recurringEventTitle}>Club Practice</h3>
-                            {/* <div className={`${styles.eventTypeBadge} ${styles.clubPractice}`}>
-                                Team Training
-                            </div> */}
                         </div>
                         
                         <div className={styles.eventSchedule}>
@@ -169,7 +168,7 @@ export default function Page() {
                             <span className={styles.noteIcon}>🏆</span>
                             <span>Tryouts required - see upcoming events above</span>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 
                 <div className={styles.generalNote}>
@@ -179,5 +178,5 @@ export default function Page() {
             </div>
 
         </div>
-    )
+    );
 }

@@ -3,6 +3,38 @@ import Link from "next/link";
 import styles from './page.module.css';
 
 export default function Page() {
+    const sponsors = [
+  {
+    name: "Joola",
+    logo: "/images/joola-logo.png",
+    type: "referral",
+    referralText: "Support the Club",
+    callToAction: "Shop Now",
+    link: "https://joola.com/?bg_ref=Uvj1SnyvVj"
+  },
+  {
+    name: "Skechers", 
+    logo: "/images/skechers-logo.png",
+    type: "regular",
+    link: "https://skechers.com"
+  },
+  {
+    name: "No Apologies Nutrition",
+    logo: "/images/no-apologies-nutrition-logo.png", 
+    type: "discount",
+    discountPercent: "15%",
+    discountCode: "USC15",
+    link: "https://noapologiesnutrition.com/"
+  },
+  {
+    name: "Courts Club",
+    logo: "/images/courts-club-logo.png",
+    type: "discount",
+    discountPercent: "15%",
+    discountCode: "USClub15",
+    link: "https://courts-club.com/"
+  }
+];
     return (
     <>
     <div className={styles.heroSection}>
@@ -42,42 +74,35 @@ export default function Page() {
     <section className={styles.sponsorsSection}>
         <h2 className={styles.sponsorsTitle}>Our Sponsors</h2>
         <div className={styles.sponsorsGrid}>
-            <div className={styles.sponsorLogo}>
-                <Image
-                    src="/images/joola-logo.png"
-                    alt="Joola Logo"
-                    width={250}
-                    height={150}
-                    style={{ objectFit: 'contain' }}
-                />
-            </div>
-            <div className={styles.sponsorLogo}>
-                <Image
-                    src="/images/skechers-logo.png"
-                    alt="Skechers Logo"
-                    width={250}
-                    height={150}
-                    style={{ objectFit: 'contain' }}
-                />
-            </div>
-            <div className={styles.sponsorLogo}>
-                <Image
-                    src="/images/no-apologies-nutrition-logo.png"
-                    alt="No Apologies Nutrition Logo"
-                    width={250}
-                    height={150}
-                    style={{ objectFit: 'contain' }}
-                />
-            </div>
-            <div className={styles.sponsorLogo}>
-                <Image
-                    src="/images/courts-club-logo.png"
-                    alt="Courts Club Logo"
-                    width={250}
-                    height={150}
-                    style={{ objectFit: 'contain' }}
-                />
-            </div>
+            {sponsors.map((sponsor, index) => (
+                <Link key={sponsor.name} href={sponsor.link} target="_blank" rel="noopener noreferrer">
+                    <div className={styles.sponsorLogo}>
+                        <div className={styles.logoContainer}>
+                            <Image
+                                src={sponsor.logo}
+                                alt={`${sponsor.name} Logo`}
+                                width={250}
+                                height={150}
+                                style={{ objectFit: 'contain' }}
+                            />
+                        </div>
+                        
+                        {sponsor.type === 'discount' && (
+                            <div className={styles.discountInfo}>
+                                <span className={styles.discountPercent}>{sponsor.discountPercent} OFF</span>
+                                <span className={styles.discountCode}>Code: {sponsor.discountCode}</span>
+                            </div>
+                        )}
+                        
+                        {sponsor.type === 'referral' && (
+                            <div className={styles.referralInfo}>
+                                <span className={styles.referralText}>{sponsor.referralText}</span>
+                                <span className={styles.callToAction}>{sponsor.callToAction} →</span>
+                            </div>
+                        )}
+                    </div>
+                </Link>
+            ))}
             <Link href="/join#sponsors" className={styles.becomeSponsorButton}>
                 <div className={styles.sponsorLogo}>
                     <div className={styles.plusIcon}>+</div>

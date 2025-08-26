@@ -74,7 +74,7 @@ export default function Page() {
     <section className={styles.sponsorsSection}>
         <h2 className={styles.sponsorsTitle}>Our Sponsors</h2>
         <div className={styles.sponsorsGrid}>
-            {sponsors.map((sponsor, index) => (
+            {sponsors.map((sponsor) => (
                 <Link key={sponsor.name} href={sponsor.link} target="_blank" rel="noopener noreferrer">
                     <div className={styles.sponsorLogo}>
                         <div className={styles.logoContainer}>

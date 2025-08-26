@@ -272,3 +272,37 @@
     padding: 10px 14px;
   }
 }
+
+.followUsBtn {
+  background: rgba(59, 130, 246, 0.2) !important;
+  border: 1px solid rgba(99, 102, 241, 0.3) !important;
+  border-radius: 20px !important;
+  padding: 8px 16px !important;
+  color: white !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15) !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease !important;
+}
+
+.followUsBtn:hover {
+  background: rgba(99, 102, 241, 0.3) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3) !important;
+  border-color: rgba(139, 92, 246, 0.5) !important;
+}
+
+/* Mobile version of Follow Us button */
+.mobileFollowUsBtn {
+  background: rgba(59, 130, 246, 0.2) !important;
+  border: 1px solid rgba(99, 102, 241, 0.3) !important;
+  border-radius: 20px !important;
+  color: white !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15) !important;
+}
+
+.mobileFollowUsBtn:hover {
+  background: rgba(99, 102, 241, 0.4) !important;
+  border-color: rgba(139, 92, 246, 0.5) !important;
+}

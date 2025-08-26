@@ -10,6 +10,7 @@ const MissionCard = ({ children, index }: { children: React.ReactNode, index: nu
     const cardRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        const currentRef = cardRef.current;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -25,13 +26,13 @@ const MissionCard = ({ children, index }: { children: React.ReactNode, index: nu
             }
         );
 
-        if (cardRef.current) {
-            observer.observe(cardRef.current);
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            if (cardRef.current) {
-                observer.unobserve(cardRef.current);
+            if (currentRef) {
+                observer.unobserve(currentRef);
             }
         };
     }, []);
@@ -225,13 +226,13 @@ export default function Page() {
                             />
                         </div>
                         <div className={styles.memberName}>Lindsey Ho</div>
-                        <div className={styles.memberTitle}>Treasurer Staff</div>
+                        <div className={styles.memberTitle}>Social Staff</div>
                     </div>
 
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
-                                src="/images/people/placeholder person.jpg" 
+                                src="/images/people/anthony yi.png" 
                                 alt="Anthony Yi" 
                                 width={120} 
                                 height={120}
@@ -265,6 +266,18 @@ export default function Page() {
                         </div>
                         <div className={styles.memberName}>Ryan Tak</div>
                         <div className={styles.memberTitle}>Media Staff</div>
+                    </div>
+                    <div className={styles.eboardMember}>
+                        <div className={styles.memberImageContainer}>
+                            <Image 
+                                src="/images/people/linus yao.jpeg" 
+                                alt="Linus Yao" 
+                                width={120} 
+                                height={120}
+                            />
+                        </div>
+                        <div className={styles.memberName}>Linus Yao</div>
+                        <div className={styles.memberTitle}>Treasurer Staff</div>
                     </div>
                 </div>
             </section>

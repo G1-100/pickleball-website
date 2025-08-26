@@ -41,7 +41,7 @@ export default function Navbar() {
           <Link href="/events" className={`${styles.navLink} ${pathname === '/events' ? styles.active : ''}`}>
             Events
           </Link>
-          <Link href="/join" className={`${styles.navLink} ${styles.getInvolvedBtn} ${pathname === '/join' ? styles.active : ''}`}>
+          <Link href="/join" className={`${styles.navLink} ${styles.followUsBtn} ${pathname === '/join' ? styles.active : ''}`}>
             Follow Us
           </Link>
         </div>
@@ -71,7 +71,7 @@ export default function Navbar() {
                 <Link href="/events" className={`${styles.mobileNavLink} ${pathname === '/events' ? styles.active : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
                 Events
                 </Link>
-                <Link href="/join" className={`${styles.mobileNavLink} ${pathname === '/join' ? styles.active : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
+                <Link href="/join" className={`${styles.mobileNavLink} ${styles.mobileFollowUsBtn} ${pathname === '/join' ? styles.active : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
                 Join Us
                 </Link>
             </div>

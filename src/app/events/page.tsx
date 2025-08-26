@@ -10,7 +10,7 @@ export default function Page() {
                 
                 <div className={styles.timeline}>
                     {/* TODO: Edit date to fit actual time*/}
-                    <div className={styles.timelineItem}>
+                    {/* <div className={styles.timelineItem}>
                         <div className={styles.timelineDot}></div>
                         <div className={styles.eventCard}>
                             <h3 className={styles.eventTitle}>First Open Play</h3>
@@ -30,7 +30,7 @@ export default function Page() {
                                 we&apos;d love to chat and talk about the new pickleball season.
                             </p>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className={styles.timelineItem}>
                         <div className={styles.timelineDot}></div>
@@ -88,8 +88,12 @@ export default function Page() {
                         
                         <div className={styles.eventSchedule}>
                             <div className={styles.scheduleItem}>
-                                <span className={styles.dayLabel}>Monday - Friday</span>
+                                <span className={styles.dayLabel}>Monday - Thursday</span>
                                 <span className={styles.timeLabel}>11:00 AM - 2:00 PM</span>
+                            </div>
+                            <div className={styles.scheduleItem}>
+                                <span className={styles.dayLabel}>Friday</span>
+                                <span className={styles.timeLabel}>12:00 PM - 2:00 PM</span>
                             </div>
                             <div className={styles.scheduleItem}>
                                 <span className={styles.dayLabel}>Saturday</span>
@@ -98,13 +102,20 @@ export default function Page() {
                         </div>
                         
                         <p className={styles.eventDescription}>
-                            Join us for casual pickleball! All skills levels are welcome, and we will set up the nets and courts. No tryouts required.
+                            USC Recreational Sports-hosted pickleball in the Lyon Center. Court C is located upstairs in the back of the basketball courts, and this is the only on-campus weekend pickleball event. Drop by to play some casual pickleball!
                         </p>
                         
                         <div className={styles.eventLocation}>
                             <span className={styles.locationIcon}>📍</span>
                             <span>Lyon Center Court C</span>
                         </div>
+
+                        <div className={styles.eventNote}>
+                            <span className={styles.noteIcon}>⚠️</span>
+                            <span>Lyon Center hours are under contention - please note that the Lyon Center website shows two different sets of times.</span>
+                        </div>
+
+                        
                     </div>
 
                     <div className={styles.recurringEventCard}>
@@ -138,9 +149,9 @@ export default function Page() {
                         </div>
                     </div>
 
-                    {/* <div className={styles.recurringEventCard}>
+                    <div className={styles.recurringEventCard}>
                         <div className={styles.eventCardHeader}>
-                            <h3 className={styles.recurringEventTitle}>Club Practice</h3>
+                            <h3 className={styles.recurringEventTitle}>Club-hosted Open Play</h3>
                         </div>
                         
                         <div className={styles.eventSchedule}>
@@ -155,25 +166,19 @@ export default function Page() {
                         </div>
                         
                         <p className={styles.eventDescription}>
-                            Structured training sessions for our competitive team members. Focus on advanced techniques, 
-                            strategy, and tournament preparation. Tryouts required to join.
+                            This is our club&apos;s own pickleball open play event. All skill levels are welcome, and we encourage you to join us at the PHED South Gym to have some late night pickling!
                         </p>
                         
                         <div className={styles.eventLocation}>
                             <span className={styles.locationIcon}>📍</span>
                             <span>PE South Gym (Room 201)</span>
                         </div>
-                        
-                        <div className={styles.eventNote}>
-                            <span className={styles.noteIcon}>🏆</span>
-                            <span>Tryouts required - see upcoming events above</span>
-                        </div>
-                    </div> */}
+                    </div>
                 </div>
                 
                 <div className={styles.generalNote}>
                     <span className={styles.noteIcon}>📍</span>
-                    <span><strong>Location Updates:</strong> Check <a style={{ color: 'blue' }} href="https://groupme.com/join_group/96038579/dmWghOg2" target="_blank" rel="noopener noreferrer">GroupMe</a> for any last-minute changes to locations or times</span>
+                    <span><strong>Location Updates:</strong> Check <a style={{ color: "blue" }} href="https://groupme.com/join_group/96038579/dmWghOg2" target="_blank" rel="noopener noreferrer">GroupMe</a> for any last-minute changes to locations or times</span>
                 </div>
             </div>
 

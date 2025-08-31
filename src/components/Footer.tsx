@@ -36,7 +36,7 @@ export default function Footer() {
                         />
                     </a>
                     <a 
-                        href="mailto:trojanpickleball@usc.edu" 
+                        href="mailto:trojanpickleball@gmail.com" 
                         aria-label="Send us an email"
                     >
                         <Image 

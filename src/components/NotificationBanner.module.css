@@ -1,0 +1,160 @@
+.banner {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  padding: 16px 24px;
+  position: fixed;
+  top: 90px; /* Slightly below the navbar */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.4s ease-out;
+  max-width: 600px;
+  width: auto;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.message {
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  min-width: 200px;
+}
+
+.linkButton {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.linkButton:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateX(-50%) translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .banner {
+    top: 85px;
+    max-width: 95%;
+    padding: 12px 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 12px;
+  }
+  
+  .content {
+    flex-direction: row;
+    gap: 8px;
+    position: relative;
+    padding-right: 35px; /* Make room for close button */
+  }
+  
+  .message {
+    font-size: 12px;
+    text-align: left;
+    flex: 1;
+    line-height: 1.3;
+  }
+  
+  .linkButton {
+    font-size: 12px;
+    padding: 6px 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .banner {
+    max-width: 98%;
+    padding: 10px 12px;
+    top: 90px;
+  }
+  
+  .content {
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 30px;
+  }
+  
+  .message {
+    font-size: 11px;
+    text-align: center;
+  }
+  
+  .linkButton {
+    font-size: 11px;
+    padding: 6px 16px;
+    align-self: center;
+  }
+  
+  .closeButton {
+    top: 6px;
+    right: 6px;
+    position: absolute;
+    transform: none;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+}

@@ -120,6 +120,32 @@ export default function Page() {
 
                     <div className={styles.recurringEventCard}>
                         <div className={styles.eventCardHeader}>
+                            <h3 className={styles.recurringEventTitle}>Club-hosted Open Play</h3>
+                        </div>
+                        
+                        <div className={styles.eventSchedule}>
+                            <div className={styles.scheduleItem}>
+                                <span className={styles.dayLabel}>Monday</span>
+                                <span className={styles.timeLabel}>8:00 PM - 10:00 PM</span>
+                            </div>
+                            <div className={styles.scheduleItem}>
+                                <span className={styles.dayLabel}>Wednesday</span>
+                                <span className={styles.timeLabel}>9:00 PM - 11:00 PM</span>
+                            </div>
+                        </div>
+                        
+                        <p className={styles.eventDescription}>
+                            This is our club&apos;s own pickleball open play event. All skill levels are welcome, and we encourage you to join us at the PHED South Gym to have some late night pickling!
+                        </p>
+                        
+                        <div className={styles.eventLocation}>
+                            <span className={styles.locationIcon}>📍</span>
+                            <span>PE South Gym (Room 210)</span>
+                        </div>
+                    </div>
+
+                    <div className={styles.recurringEventCard}>
+                        <div className={styles.eventCardHeader}>
                             <h3 className={styles.recurringEventTitle}>Intramural League</h3>
                             {/* <div className={`${styles.eventTypeBadge} ${styles.intramural}`}>
                                 Competitive
@@ -149,31 +175,7 @@ export default function Page() {
                         </div>
                     </div>
 
-                    <div className={styles.recurringEventCard}>
-                        <div className={styles.eventCardHeader}>
-                            <h3 className={styles.recurringEventTitle}>Club-hosted Open Play</h3>
-                        </div>
-                        
-                        <div className={styles.eventSchedule}>
-                            <div className={styles.scheduleItem}>
-                                <span className={styles.dayLabel}>Monday</span>
-                                <span className={styles.timeLabel}>8:00 PM - 10:00 PM</span>
-                            </div>
-                            <div className={styles.scheduleItem}>
-                                <span className={styles.dayLabel}>Wednesday</span>
-                                <span className={styles.timeLabel}>9:00 PM - 11:00 PM</span>
-                            </div>
-                        </div>
-                        
-                        <p className={styles.eventDescription}>
-                            This is our club&apos;s own pickleball open play event. All skill levels are welcome, and we encourage you to join us at the PHED South Gym to have some late night pickling!
-                        </p>
-                        
-                        <div className={styles.eventLocation}>
-                            <span className={styles.locationIcon}>📍</span>
-                            <span>PE South Gym (Room 201)</span>
-                        </div>
-                    </div>
+                    
                 </div>
                 
                 <div className={styles.generalNote}>

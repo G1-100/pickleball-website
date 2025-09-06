@@ -33,7 +33,19 @@ export default function Page() {
     discountPercent: "15%",
     discountCode: "USClub15",
     link: "https://courts-club.com/"
-  }
+  },
+  {
+    name: "Road to Pro", 
+    logo: "/images/roadtopro_logo.png",
+    type: "regular",
+    link: "https://rtptennis.com/"
+  },
+  {
+    name: "C&D Nets", 
+    logo: "/images/c&dnets_logo.png",
+    type: "regular",
+    link: "https://bestpickleballnets.com/"
+  },
 ];
     return (
     <>

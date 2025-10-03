@@ -284,8 +284,51 @@ export default function Page() {
 
             <section className={styles.competitiveSection}>
                 <h2>Competitive Team</h2>
-                <div className={styles.competitiveCaption}>
-                    To Be Determined...
+                
+                <div className={styles.competitiveImageContainer}>
+                    <Image 
+                        src="/images/competitive team.png" 
+                        alt="Competitive Team" 
+                        width={600} 
+                        height={400}
+                        className={styles.competitiveImage}
+                    />
+                </div>
+
+                <div className={styles.teamsContainer}>
+                    <div className={styles.teamColumn}>
+                        <h3>Mens</h3>
+                        <ul className={styles.teamList}>
+                            <li>Kyle K.</li>
+                            <li>Brian T.</li>
+                            <li>Jonathan P.</li>
+                            <li>Jonathan D.</li>
+                            <li>Chris S.</li>
+                            <li>Michael J.</li>
+                            <li>Raphael F.</li>
+                            <li>Chas F.</li>
+                            <li>David H.</li>
+                            <li>Brandon L.</li>
+                            <li>Jeremy L.</li>
+                            <li>Linus Y.</li>
+                            <li>Kevin L.</li>
+                            <li>Dilen K.</li>
+                        </ul>
+                    </div>
+                    
+                    <div className={styles.teamColumn}>
+                        <h3>Women</h3>
+                        <ul className={styles.teamList}>
+                            <li>Hannah J.</li>
+                            <li>Kendadee B.</li>
+                            <li>Emily L.</li>
+                            <li>Meagan D.</li>
+                            <li>Emmy S.</li>
+                            <li>Sammie A.</li>
+                            <li>Elena S.</li>
+                            <li>Tyffany V.</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
         </div>

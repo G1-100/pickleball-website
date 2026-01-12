@@ -36,7 +36,7 @@ export default function Page() {
                         <div className={styles.timelineDot}></div>
                         <div className={styles.eventCard}>
                             <h3 className={styles.eventTitle}>Recfest</h3>
-                            <p className={styles.eventDate}>August 27th, 2025 (5 PM - 7 PM)</p>
+                            <p className={styles.eventDate}>Jan 15th, 2025 (5 PM - 7 PM)</p>
                             <p className={styles.eventDescription}>
                                 Join us for Recfest! In case you missed us at Involvement Fair, this is another chance 
                                 to connect with our club and get excited for pickleball.
@@ -47,25 +47,23 @@ export default function Page() {
                     <div className={styles.timelineItem}>
                         <div className={styles.timelineDot}></div>
                         <div className={styles.eventCard}>
-                            <h3 className={styles.eventTitle}>Fall Tryouts</h3>
-                            <p className={styles.eventDate}>August 31st, 2025 (3 PM - 6 PM)</p>
+                            <h3 className={styles.eventTitle}>Spring Tryouts</h3>
+                            <p className={styles.eventDate}>Jan 17st, 2025 (12 PM - 4 PM)</p>
                             <p className={styles.eventDescription}>
-                                It&apos;s the big day! Come to Powerplay at 19401 Main St, Carson, CA 90248 ($10 upfront fee) to tryout for our competitive team. This is your opportunity to showcase your skills, so make sure to bring your waterbottle, tennis shoes, and paddles. There are $10 demo paddles if needed.
-
-                                Format: 3:00 - 4:30 First Round; 4:30 - 6:00 Second Round (Invite Only)
+                                It&apos;s the big day! Come to Powerplay at 19401 Main St, Carson, CA 90248 ($15 upfront fee) to tryout for our competitive team. This is your opportunity to showcase your skills, so make sure to bring your waterbottle, tennis shoes, and paddles. There are $10 demo paddles if needed.
                             </p>
                         </div>
                     </div>
-                    <div className={styles.timelineItem}>
+                    {/* <div className={styles.timelineItem}>
                         <div className={styles.timelineDot}></div>
                         <div className={styles.eventCard}>
-                            <h3 className={styles.eventTitle}>Fall Semester Open Tournament</h3>
+                            <h3 className={styles.eventTitle}>Spring Semester Open Play Social</h3>
                             <p className={styles.eventDate}>???</p>
                             <p className={styles.eventDescription}>
                                 Get ready for our fall semester tournament. Bring your sunscreen, best paddle, and some competitive spirit, because things are about to get red-hot! More details coming soon.
                             </p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className={styles.futureEventsIndicator}>
@@ -110,10 +108,10 @@ export default function Page() {
                             <span>Lyon Center Court C</span>
                         </div>
 
-                        <div className={styles.eventNote}>
+                        {/* <div className={styles.eventNote}>
                             <span className={styles.noteIcon}>⚠️</span>
                             <span>Lyon Center hours are under contention - please note that the Lyon Center website shows two different sets of times.</span>
-                        </div>
+                        </div> */}
 
                         
                     </div>
@@ -135,21 +133,23 @@ export default function Page() {
                         </div>
                         
                         <p className={styles.eventDescription}>
-                            This is our club&apos;s own pickleball open play event. All skill levels are welcome, and we encourage you to join us at the PHED South Gym to have some late night pickling!
+                            This is our club&apos;s own pickleball open play event. All skill levels are welcome, and we encourage you to join us at the PED South Gym to have some late night pickling!
                         </p>
                         
                         <div className={styles.eventLocation}>
                             <span className={styles.locationIcon}>📍</span>
                             <span>PE South Gym (Room 210)</span>
                         </div>
+
+                        <div className={styles.eventNote}>
+                            <span className={styles.noteIcon}>⚠️</span>
+                            <span>Until 1/26, Open Plays will be held 8-10 PM Mondays and Wednesdays at Lyon Center Court C</span>
+                        </div>
                     </div>
 
-                    <div className={styles.recurringEventCard}>
+                    {/* <div className={styles.recurringEventCard}>
                         <div className={styles.eventCardHeader}>
                             <h3 className={styles.recurringEventTitle}>Intramural League</h3>
-                            {/* <div className={`${styles.eventTypeBadge} ${styles.intramural}`}>
-                                Competitive
-                            </div> */}
                         </div>
                         
                         <div className={styles.eventSchedule}>
@@ -173,7 +173,7 @@ export default function Page() {
                             <span className={styles.noteIcon}>🗓</span>
                             <span>Lasts 9/8 - 10/13 </span>
                         </div>
-                    </div>
+                    </div> */}
 
                     
                 </div>

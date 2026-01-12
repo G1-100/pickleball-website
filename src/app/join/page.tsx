@@ -91,7 +91,7 @@ export default function Page() {
                             <li>Participate in our open plays and tournaments</li>
                             <li>Tryout for the competitive team and play at the national level</li>
                             <li>Introduce your friends to pickleball and help us grow the community</li>
-                            <li>Apply to join the E-Board <a href='https://bit.ly/4lVRnVo' style={{ color: 'blue' }}>here</a></li>
+                            <li>Apply to join the E-Board <a href='https://forms.gle/GZLmCxfx4jjSBgqQ9' style={{ color: 'blue' }}>here</a></li>
                         </ul>
                     </div>
                 </div>

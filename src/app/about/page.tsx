@@ -125,7 +125,7 @@ export default function Page() {
                 <h2>E-Board</h2>
                 
                 <div className={styles.eboardGrid}>
-                    <div className={styles.eboardMember}>
+                    {/* <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
                             <Image 
                                 src="/images/people/alex han.jpeg" 
@@ -136,7 +136,7 @@ export default function Page() {
                         </div>
                         <div className={styles.memberName}>Alex Han</div>
                         <div className={styles.memberTitle}>President</div>
-                    </div>
+                    </div> */}
 
                     <div className={styles.eboardMember}>
                         <div className={styles.memberImageContainer}>
@@ -148,7 +148,20 @@ export default function Page() {
                             />
                         </div>
                         <div className={styles.memberName}>Kyle Kim</div>
-                        <div className={styles.memberTitle}>Vice President</div>
+                        <div className={styles.memberTitle}>Co-President</div>
+                    </div>
+
+                    <div className={styles.eboardMember}>
+                        <div className={styles.memberImageContainer}>
+                            <Image 
+                                src="/images/people/chris shin.jpeg" 
+                                alt="Chris Shin" 
+                                width={120} 
+                                height={120}
+                            />
+                        </div>
+                        <div className={styles.memberName}>Chris Shin</div>
+                        <div className={styles.memberTitle}>Co-President</div>
                     </div>
 
                     <div className={styles.eboardMember}>
@@ -162,19 +175,6 @@ export default function Page() {
                         </div>
                         <div className={styles.memberName}>Jonathan Park</div>
                         <div className={styles.memberTitle}>Treasurer</div>
-                    </div>
-
-                    <div className={styles.eboardMember}>
-                        <div className={styles.memberImageContainer}>
-                            <Image 
-                                src="/images/people/chris shin.jpeg" 
-                                alt="Chris Shin" 
-                                width={120} 
-                                height={120}
-                            />
-                        </div>
-                        <div className={styles.memberName}>Chris Shin</div>
-                        <div className={styles.memberTitle}>Social Chair</div>
                     </div>
 
                     <div className={styles.eboardMember}>
@@ -284,8 +284,13 @@ export default function Page() {
 
             <section className={styles.competitiveSection}>
                 <h2>Competitive Team</h2>
+                <div className={styles.teamsContainer}>
+                    <div className={styles.teamColumn}>
+                        <h3>To be determined...</h3>
+                    </div>
+                </div>
                 
-                <div className={styles.competitiveImageContainer}>
+                {/* <div className={styles.competitiveImageContainer}>
                     <Image 
                         src="/images/competitive team.png" 
                         alt="Competitive Team" 
@@ -329,7 +334,7 @@ export default function Page() {
                             <li>Tyffany V.</li>
                         </ul>
                     </div>
-                </div>
+                </div> */}
             </section>
         </div>
     )

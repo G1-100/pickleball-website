@@ -46,6 +46,14 @@ export default function Page() {
     type: "regular",
     link: "https://bestpickleballnets.com/"
   },
+  {
+    name: "Cookiegrips", 
+    logo: "/images/cookiegrips_logo.png",
+    type: "discount",
+    discountPercent: "10%",
+    discountCode: "TPCOOKIES",
+    link: "https://cookiegrips.com/"
+  }
 ];
     return (
     <>

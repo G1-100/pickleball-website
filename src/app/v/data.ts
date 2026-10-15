@@ -85,4 +85,5 @@ export const variations = [
   { n: 3, name: "Kit drop", blurb: "Sport-campaign editorial: photo mosaic, jersey numerals, glass spec panels." },
   { n: 4, name: "Arena", blurb: "Night arena: neon wireframe court, angled photo frames, scroll-driven filmstrip." },
   { n: 5, name: "Roster wall", blurb: "Scouting file: a wall of club photos and player cards with data readouts." },
+  { n: 6, name: "Athlete", blurb: "Athlete-portfolio style: B/W hero with a giant number, scroll-driven chapters, holo trading cards, LED quote." },
 ];

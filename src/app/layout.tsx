@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Big_Shoulders, Geist, Geist_Mono } from "next/font/google";
+import { Anton, Big_Shoulders, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -15,6 +15,12 @@ const display = Big_Shoulders({
   subsets: ["latin"],
   weight: ["700", "800", "900"],
   adjustFontFallback: false,
+});
+
+const anton = Anton({
+  variable: "--font-anton",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 const mono = Geist_Mono({
@@ -33,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} ${display.variable}`}>
+    <html lang="en" className={`${sans.variable} ${mono.variable} ${display.variable} ${anton.variable}`}>
       <body>
         <a href="#main" className="skip-link">Skip to content</a>
         <Navbar />

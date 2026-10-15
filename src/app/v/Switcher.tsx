@@ -12,7 +12,7 @@ export default function Switcher() {
 
   return (
     <nav className={styles.switcher} aria-label="Design variations">
-      <Link href="/v" className={styles.all}>{current ? `${current}/5 ${name}` : name}</Link>
+      <Link href="/v" className={styles.all}>{current ? `${current}/${variations.length} ${name}` : name}</Link>
       <ul>
         {variations.map((v) => (
           <li key={v.n}>

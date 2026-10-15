@@ -9,13 +9,14 @@ const previews = [
   "/images/fun.jpg",
   "/images/gallery/bench-cheer.jpg",
   "/images/hero-image.jpg",
+  "/images/growth.jpg",
 ];
 
 export default function Page() {
   return (
     <section className={styles.wrap}>
       <p className="label">Design variations</p>
-      <h1 className={styles.title}>Five directions</h1>
+      <h1 className={styles.title}>Six directions</h1>
       <p className={styles.sub}>Each mixes a bold, sporty base with techy foreground details. Open one, then use the switcher at the bottom to compare.</p>
       <ul className={styles.list}>
         {variations.map((v, i) => (

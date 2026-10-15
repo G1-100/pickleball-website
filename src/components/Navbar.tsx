@@ -36,6 +36,9 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [isOpen]);
 
+  // Variation 6 draws its own athlete-site style menu.
+  if (pathname.startsWith("/v/6")) return null;
+
   return (
     <header className={`${styles.navbar} ${scrolled || isOpen ? styles.solid : ""}`}>
       <nav className={styles.inner} aria-label="Main">

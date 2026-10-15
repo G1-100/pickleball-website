@@ -54,7 +54,7 @@ function buildBall(): { pos: Vec; rim: boolean }[] {
   return out;
 }
 
-export default function PointBall({ className }: { className?: string }) {
+export default function PointBall({ className, tone = "dark" }: { className?: string; tone?: "dark" | "light" }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -131,9 +131,9 @@ export default function PointBall({ className }: { className?: string }) {
         const depth = (z + 1) / 2; // 0 back, 1 front
         const alpha = (0.05 + Math.pow(depth, 1.6) * 0.95) * ease * (rim ? 1 : 0.75);
         const size = (rim ? 2 : 1.5) * scale;
-        ctx.fillStyle = rim
-          ? `rgba(226, 244, 140, ${alpha})`
-          : `rgba(236, 235, 232, ${alpha * 0.85})`;
+        ctx.fillStyle = tone === "dark"
+          ? rim ? `rgba(226, 244, 140, ${alpha})` : `rgba(236, 235, 232, ${alpha * 0.85})`
+          : rim ? `rgba(153, 0, 0, ${alpha})` : `rgba(20, 8, 10, ${alpha * 0.8})`;
         ctx.fillRect(px - size / 2, py - size / 2, size, size);
       }
 
@@ -171,7 +171,7 @@ export default function PointBall({ className }: { className?: string }) {
       window.removeEventListener("resize", onResize);
       window.removeEventListener("pointermove", onPointer);
     };
-  }, []);
+  }, [tone]);
 
   return <canvas ref={ref} className={className} aria-hidden="true" />;
 }

@@ -1,0 +1,49 @@
+.switcher {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  z-index: 1500;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 5px 5px 16px;
+  border-radius: 999px;
+  background: rgba(10, 11, 13, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  color: #ecebe8;
+  font-family: var(--font-m);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.all {
+  margin-right: 8px;
+}
+
+.switcher ul {
+  list-style: none;
+  display: flex;
+  gap: 4px;
+}
+
+.switcher li a {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.switcher li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.switcher li a[aria-current="page"] {
+  background: #ffcc00;
+  color: #1d0306;
+}

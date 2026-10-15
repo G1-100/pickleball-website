@@ -11,6 +11,10 @@
 
   --font-s: var(--font-sans), system-ui, sans-serif;
   --font-m: var(--font-mono), ui-monospace, monospace;
+  --font-d: var(--font-display), "Arial Narrow", sans-serif;
+  --cardinal: #990000;
+  --cardinal-deep: #4a0009;
+  --gold: #ffcc00;
 
   --gutter: clamp(16px, 3.5vw, 48px);
   --max: 1360px;
@@ -173,4 +177,27 @@ h4 {
     transform: none;
     filter: none;
   }
+}
+
+/* Corner brackets, like a camera viewfinder */
+.brackets {
+  position: relative;
+}
+
+.brackets::after {
+  content: "";
+  position: absolute;
+  inset: var(--bk-inset, 10px);
+  pointer-events: none;
+  --bk: var(--bk-color, rgba(255, 255, 255, 0.85));
+  --bl: var(--bk-len, 16px);
+  background:
+    linear-gradient(var(--bk), var(--bk)) top left / var(--bl) 1.5px no-repeat,
+    linear-gradient(var(--bk), var(--bk)) top left / 1.5px var(--bl) no-repeat,
+    linear-gradient(var(--bk), var(--bk)) top right / var(--bl) 1.5px no-repeat,
+    linear-gradient(var(--bk), var(--bk)) top right / 1.5px var(--bl) no-repeat,
+    linear-gradient(var(--bk), var(--bk)) bottom left / var(--bl) 1.5px no-repeat,
+    linear-gradient(var(--bk), var(--bk)) bottom left / 1.5px var(--bl) no-repeat,
+    linear-gradient(var(--bk), var(--bk)) bottom right / var(--bl) 1.5px no-repeat,
+    linear-gradient(var(--bk), var(--bk)) bottom right / 1.5px var(--bl) no-repeat;
 }

@@ -1,9 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import styles from "./NotificationBanner.module.css";
 
 export default function NotificationBanner() {
   const [isVisible, setIsVisible] = useState(false);
+  const pathname = usePathname();
 
   // Appear once the visitor scrolls past the first screen, so it never covers the hero.
   useEffect(() => {
@@ -17,7 +19,8 @@ export default function NotificationBanner() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (!isVisible) return null;
+  // The design-variation pages have their own switcher in this corner.
+  if (!isVisible || pathname.startsWith("/v")) return null;
 
   return (
     <aside className={styles.banner} aria-label="Club links">

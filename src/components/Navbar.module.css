@@ -2,6 +2,7 @@
   position: fixed;
   inset: 0 0 auto;
   z-index: 1000;
+  background: linear-gradient(to bottom, rgba(10, 11, 13, 0.55), rgba(10, 11, 13, 0));
   transition: background-color 0.5s var(--ease), border-color 0.5s var(--ease);
   border-bottom: 1px solid transparent;
 }
@@ -56,7 +57,7 @@
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: rgba(236, 235, 232, 0.72);
   transition: color 0.3s;
   position: relative;
 }

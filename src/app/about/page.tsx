@@ -1,341 +1,148 @@
-'use client';
-
 import Image from "next/image";
-import styles from './page.module.css';
-import { useEffect, useRef, useState } from 'react';
+import Link from "next/link";
+import styles from "./page.module.css";
+import Reveal from "@/components/Reveal";
+import TiltCard from "@/components/TiltCard";
 
-const MissionCard = ({ children, index }: { children: React.ReactNode, index: number }) => {
-    const [isVisible, setIsVisible] = useState(false);
-    const [hasBeenVisible, setHasBeenVisible] = useState(false);
-    const cardRef = useRef<HTMLDivElement>(null);
+const pillars = [
+  {
+    name: "Wellness",
+    image: "/images/wellness.jpg",
+    alt: "Player hitting a dink at the kitchen line",
+    text: "Pickleball keeps us moving, laughing, and connected. We believe in building healthy habits that last, whether that is breaking a sweat on the court or sharing a snack after practice. After all, maintaining mental and physical health is a lifelong journey.",
+  },
+  {
+    name: "Growth",
+    image: "/images/growth.jpg",
+    alt: "Player lunging for a drive",
+    text: "We're all about growth on and off the court. Pickleball is a game of skill, strategy, and continuous improvement. Over time, we aspire to move a little faster, aim with better intention, and plan with longer forethought.",
+  },
+  {
+    name: "Fun",
+    image: "/images/fun.jpg",
+    alt: "Members smiling with the Trojan mascot",
+    text: "Fun is at the heart of pickleball. We play hard, but we also know how to have a good time. With plenty of open plays and casual tournaments, we create an environment where everyone can enjoy the game.",
+  },
+  {
+    name: "Competition",
+    image: "/images/competition.jpg",
+    alt: "2025 DUPR Collegiate National Championship team poster",
+    text: "We embrace competition as a way to challenge ourselves and each other. Our competitive team travels the nation, playing with passion and determination against other universities; no matter the outcome, we always rise up and support one another.",
+  },
+];
 
-    useEffect(() => {
-        const currentRef = cardRef.current;
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    setHasBeenVisible(true);
-                } else {
-                    setIsVisible(false);
-                }
-            },
-            {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            }
-        );
+const eboard = [
+  { name: "Kyle Kim", role: "Co-President", photo: "/images/people/kyle kim.JPG" },
+  { name: "Chris Shin", role: "Co-President", photo: "/images/people/chris shin.jpeg" },
+  { name: "Jonathan Park", role: "Treasurer", photo: "/images/people/jonathan park.png" },
+  { name: "An Duong", role: "Media Chair", photo: "/images/people/an duong.jpeg" },
+  { name: "Gavin Huang", role: "VP Staff", photo: "/images/people/gavin huang.jpeg" },
+  { name: "Ty Valencia", role: "VP Staff", photo: "/images/people/ty valencia.png" },
+  { name: "Lindsey Ho", role: "Social Staff", photo: "/images/people/lindsey ho.JPEG" },
+  { name: "Anthony Yi", role: "Social Staff", photo: "/images/people/anthony yi.png" },
+  { name: "Tyffany Vu", role: "Social Staff", photo: "/images/people/tyfanny vu.jpeg" },
+  { name: "Ryan Tak", role: "Media Staff", photo: "/images/people/ryan tak.jpeg" },
+  { name: "Linus Yao", role: "Treasurer Staff", photo: "/images/people/linus yao.jpeg" },
+];
 
-        if (currentRef) {
-            observer.observe(currentRef);
-        }
-
-        return () => {
-            if (currentRef) {
-                observer.unobserve(currentRef);
-            }
-        };
-    }, []);
-
-    const slideDirection = index % 2 === 0 ? 'left' : 'right';
-    const animationDelay = isVisible ? index * 0.1 : 0; // Only delay on entrance
-
-    return (
-        <div 
-            ref={cardRef}
-            className={`${styles.missionItem} ${isVisible ? styles.slideInVisible : styles.slideInHidden} ${styles[`slideFrom${slideDirection.charAt(0).toUpperCase() + slideDirection.slice(1)}`]} ${hasBeenVisible ? styles.hasBeenVisible : ''}`}
-            style={{
-                transitionDelay: `${animationDelay}s`
-            }}
-        >
-            {children}
-        </div>
-    );
-};
+// Flip to true and fill in the rosters once the new competitive team is announced.
+const rosterAnnounced = false;
+const roster: { team: string; players: string[] }[] = [
+  { team: "Men's", players: [] },
+  { team: "Women's", players: [] },
+];
 
 export default function Page() {
-    return (
-        <div className={styles.aboutContainer}>
-            <section className={styles.missionSection}>
-                <h1>Our Mission</h1>
-                
-                <MissionCard index={0}>
-                    <div className={styles.missionContent}>
-                        <h2>Wellness</h2>
-                        <p>Pickleball keeps us moving, laughing, and connected. We believe in building healthy habits that last, whether that is breaking a sweat on the court or sharing a snack after practice. After all, maintaining mental and physical health is a lifelong journey.</p>
-                    </div>
-                    <div className={styles.imageContainer}>
-                        <Image 
-                            src="/images/wellness.jpg" 
-                            alt="Dink image" 
-                            width={400} 
-                            height={300}
-                        />
-                    </div>
-                </MissionCard>
-
-                <MissionCard index={1}>
-                    <div className={styles.missionContent}>
-                        <h2>Growth</h2>
-                        <p>We&apos;re all about growth on and off the court. Pickleball is a game of skill, strategy, and continuous improvement. Over time, we aspire to move a little faster, aim with better intention, and plan with longer forethought.</p>
-                    </div>
-                    <div className={styles.imageContainer}>
-                        <Image 
-                            src="/images/growth.jpg" 
-                            alt="drive image" 
-                            width={400} 
-                            height={300}
-                        />
-                    </div>
-                </MissionCard>
-
-                <MissionCard index={2}>
-                    <div className={styles.missionContent}>
-                        <h2>Fun</h2>
-                        <p>Fun is at the heart of pickleball. We play hard, but we also know how to have a good time. With plenty of open plays and casual tournaments, we create an environment where everyone can enjoy the game.</p>
-                    </div>
-                    <div className={styles.imageContainer}>
-                        <Image 
-                            src="/images/fun.jpg" 
-                            alt="trojan costume and players smiling" 
-                            width={400} 
-                            height={300}
-                        />
-                    </div>
-                </MissionCard>
-
-                <MissionCard index={3}>
-                    <div className={styles.missionContent}>
-                        <h2>Competition</h2>
-                        <p>We embrace competition as a way to challenge ourselves and each other. Our competitive team travels the nation, playing with passion and determination against other universities; no matter the outcome, we always rise up and support one another.</p>
-                    </div>
-                    <div className={styles.imageContainer}>
-                        <Image 
-                            src="/images/competition.jpg" 
-                            alt="nationals poster" 
-                            width={400} 
-                            height={300}
-                        />
-                    </div>
-                </MissionCard>
-            </section>
-
-            <section className={styles.teamSection}>
-                <h1>Our Team</h1>
-                <h2>E-Board</h2>
-                
-                <div className={styles.eboardGrid}>
-                    {/* <div className={styles.eboardMember}>
-                        <div className={styles.memberImageContainer}>
-                            <Image 
-                                src="/images/people/alex han.jpeg" 
-                                alt="Alex Han"
-                                width={120} 
-                                height={120}
-                            />
-                        </div>
-                        <div className={styles.memberName}>Alex Han</div>
-                        <div className={styles.memberTitle}>President</div>
-                    </div> */}
-
-                    <div className={styles.eboardMember}>
-                        <div className={styles.memberImageContainer}>
-                            <Image 
-                                src="/images/people/kyle kim.JPG" 
-                                alt="Kyle Kim"
-                                width={120} 
-                                height={120}
-                            />
-                        </div>
-                        <div className={styles.memberName}>Kyle Kim</div>
-                        <div className={styles.memberTitle}>Co-President</div>
-                    </div>
-
-                    <div className={styles.eboardMember}>
-                        <div className={styles.memberImageContainer}>
-                            <Image 
-                                src="/images/people/chris shin.jpeg" 
-                                alt="Chris Shin" 
-                                width={120} 
-                                height={120}
-                            />
-                        </div>
-                        <div className={styles.memberName}>Chris Shin</div>
-                        <div className={styles.memberTitle}>Co-President</div>
-                    </div>
-
-                    <div className={styles.eboardMember}>
-                        <div className={styles.memberImageContainer}>
-                            <Image 
-                                src="/images/people/jonathan park.png" 
-                                alt="Jonathan Park" 
-                                width={120} 
-                                height={120}
-                            />
-                        </div>
-                        <div className={styles.memberName}>Jonathan Park</div>
-                        <div className={styles.memberTitle}>Treasurer</div>
-                    </div>
-
-                    <div className={styles.eboardMember}>
-                        <div className={styles.memberImageContainer}>
-                            <Image 
-                                src="/images/people/an duong.jpeg" 
-                                alt="An Duong" 
-                                width={120} 
-                                height={120}
-                            />
-                        </div>
-                        <div className={styles.memberName}>An Duong</div>
-                        <div className={styles.memberTitle}>Media Chair</div>
-                    </div>
-
-                    <div className={styles.eboardMember}>
-                        <div className={styles.memberImageContainer}>
-                            <Image 
-                                src="/images/people/gavin huang.jpeg" 
-                                alt="Gavin Huang" 
-                                width={120} 
-                                height={120}
-                            />
-                        </div>
-                        <div className={styles.memberName}>Gavin Huang</div>
-                        <div className={styles.memberTitle}>VP Staff</div>
-                    </div>
-
-                    <div className={styles.eboardMember}>
-                        <div className={styles.memberImageContainer}>
-                            <Image 
-                                src="/images/people/ty valencia.png" 
-                                alt="Ty Valencia" 
-                                width={120} 
-                                height={120}
-                            />
-                        </div>
-                        <div className={styles.memberName}>Ty Valencia</div>
-                        <div className={styles.memberTitle}>VP Staff</div>
-                    </div>
-
-                    <div className={styles.eboardMember}>
-                        <div className={styles.memberImageContainer}>
-                            <Image 
-                                src="/images/people/lindsey ho.JPEG" 
-                                alt="Lindsey Ho" 
-                                width={120} 
-                                height={120}
-                            />
-                        </div>
-                        <div className={styles.memberName}>Lindsey Ho</div>
-                        <div className={styles.memberTitle}>Social Staff</div>
-                    </div>
-
-                    <div className={styles.eboardMember}>
-                        <div className={styles.memberImageContainer}>
-                            <Image 
-                                src="/images/people/anthony yi.png" 
-                                alt="Anthony Yi" 
-                                width={120} 
-                                height={120}
-                            />
-                        </div>
-                        <div className={styles.memberName}>Anthony Yi</div>
-                        <div className={styles.memberTitle}>Social Staff</div>
-                    </div>
-
-                    <div className={styles.eboardMember}>
-                        <div className={styles.memberImageContainer}>
-                            <Image 
-                                src="/images/people/tyfanny vu.jpeg" 
-                                alt="Tyffany Vu" 
-                                width={120} 
-                                height={120}
-                            />
-                        </div>
-                        <div className={styles.memberName}>Tyffany Vu</div>
-                        <div className={styles.memberTitle}>Social Staff</div>
-                    </div>
-
-                    <div className={styles.eboardMember}>
-                        <div className={styles.memberImageContainer}>
-                            <Image 
-                                src="/images/people/ryan tak.jpeg" 
-                                alt="Ryan Tak" 
-                                width={120} 
-                                height={120}
-                            />
-                        </div>
-                        <div className={styles.memberName}>Ryan Tak</div>
-                        <div className={styles.memberTitle}>Media Staff</div>
-                    </div>
-                    <div className={styles.eboardMember}>
-                        <div className={styles.memberImageContainer}>
-                            <Image 
-                                src="/images/people/linus yao.jpeg" 
-                                alt="Linus Yao" 
-                                width={120} 
-                                height={120}
-                            />
-                        </div>
-                        <div className={styles.memberName}>Linus Yao</div>
-                        <div className={styles.memberTitle}>Treasurer Staff</div>
-                    </div>
-                </div>
-            </section>
-
-            <section className={styles.competitiveSection}>
-                <h2>Competitive Team</h2>
-                <div className={styles.teamsContainer}>
-                    <div className={styles.teamColumn}>
-                        <h3>To be determined...</h3>
-                    </div>
-                </div>
-                
-                {/* <div className={styles.competitiveImageContainer}>
-                    <Image 
-                        src="/images/competitive team.png" 
-                        alt="Competitive Team" 
-                        width={600} 
-                        height={400}
-                        className={styles.competitiveImage}
-                    />
-                </div>
-
-                <div className={styles.teamsContainer}>
-                    <div className={styles.teamColumn}>
-                        <h3>Mens</h3>
-                        <ul className={styles.teamList}>
-                            <li>Kyle K.</li>
-                            <li>Brian T.</li>
-                            <li>Jonathan P.</li>
-                            <li>Jonathan D.</li>
-                            <li>Chris S.</li>
-                            <li>Michael J.</li>
-                            <li>Raphael F.</li>
-                            <li>Chas F.</li>
-                            <li>David H.</li>
-                            <li>Brandon L.</li>
-                            <li>Jeremy L.</li>
-                            <li>Linus Y.</li>
-                            <li>Kevin L.</li>
-                            <li>Dilen K.</li>
-                        </ul>
-                    </div>
-                    
-                    <div className={styles.teamColumn}>
-                        <h3>Women</h3>
-                        <ul className={styles.teamList}>
-                            <li>Hannah J.</li>
-                            <li>Kendadee B.</li>
-                            <li>Emily L.</li>
-                            <li>Meagan D.</li>
-                            <li>Emmy S.</li>
-                            <li>Sammie A.</li>
-                            <li>Elena S.</li>
-                            <li>Tyffany V.</li>
-                        </ul>
-                    </div>
-                </div> */}
-            </section>
+  return (
+    <>
+      <section className={styles.hero}>
+        <div className={styles.heroInner}>
+          <h1 className={styles.heroTitle}>What we play for</h1>
+          <ul className={styles.pillarNav}>
+            {pillars.map((p, i) => (
+              <li key={p.name} style={{ "--i": i } as React.CSSProperties}>
+                <a href={`#${p.name.toLowerCase()}`}>{p.name}</a>
+              </li>
+            ))}
+          </ul>
         </div>
-    )
+      </section>
+
+      <section className={styles.mission} aria-label="Our mission">
+        {pillars.map((p, i) => (
+          <article
+            key={p.name}
+            id={p.name.toLowerCase()}
+            className={styles.pillar}
+            data-tone={i}
+            style={{ "--i": i } as React.CSSProperties}
+          >
+            <div className={styles.pillarText}>
+              <h2 className={styles.pillarName}>{p.name}</h2>
+              <p>{p.text}</p>
+            </div>
+            <div className={styles.pillarImage}>
+              <Image src={p.image} alt={p.alt} fill sizes="(max-width: 900px) 90vw, 45vw" />
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className={styles.team}>
+        <div className={styles.inner}>
+          <div className={styles.teamHead}>
+            <h2 className={styles.teamTitle}>The e-board</h2>
+            <p>The students who book the courts, run the socials, and keep the club going.</p>
+          </div>
+          <ul className={styles.eboard}>
+            {eboard.map((m, i) => (
+              <Reveal as="li" key={m.name} delay={(i % 4) * 0.06}>
+                <TiltCard className={styles.card}>
+                  <div className={styles.cardPhoto}>
+                    <Image src={m.photo} alt={m.name} fill sizes="(max-width: 640px) 45vw, 260px" />
+                  </div>
+                  <div className={styles.cardInfo}>
+                    <span className={styles.cardName}>{m.name}</span>
+                    <span className={styles.cardRole}>{m.role}</span>
+                  </div>
+                  <span className={styles.shine} aria-hidden="true" />
+                </TiltCard>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className={styles.competitive} id="competitive">
+        <div className={styles.inner}>
+          <h2 className={styles.compTitle}>Competitive team</h2>
+          {rosterAnnounced ? (
+            <div className={styles.roster}>
+              {roster.map((r) => (
+                <div key={r.team}>
+                  <h3>{r.team}</h3>
+                  <ul>
+                    {r.players.map((name) => <li key={name}>{name}</li>)}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className={styles.tbd}>
+              <div className={styles.scoreboard} aria-hidden="true">
+                <span>0</span>
+                <span>0</span>
+                <span>2</span>
+              </div>
+              <div>
+                <p className={styles.tbdLead}>This season&apos;s roster is still being decided.</p>
+                <p>Tryouts are posted on the events page. Come show us what you&apos;ve got.</p>
+                <Link href="/events" className="btn btn-solid">See tryout dates</Link>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    </>
+  );
 }

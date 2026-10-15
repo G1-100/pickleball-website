@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo, Big_Shoulders } from "next/font/google";
 import "./globals.css";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import NotificationBanner from "@/components/NotificationBanner"; 
+import NotificationBanner from "@/components/NotificationBanner";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const display = Big_Shoulders({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["600", "800", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const body = Archivo({
+  variable: "--font-body",
   subsets: ["latin"],
 });
 
@@ -26,11 +27,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Navbar />
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
+      <body>
+        <a href="#main" className="skip-link">Skip to content</a>
         <NotificationBanner />
-        {children}
+        <Navbar />
+        <main id="main">{children}</main>
         <Footer />
       </body>
     </html>

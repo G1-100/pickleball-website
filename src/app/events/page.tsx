@@ -1,189 +1,207 @@
-import React from 'react';
-import styles from './page.module.css';
+import styles from "./page.module.css";
+import Reveal from "@/components/Reveal";
+
+type Upcoming = { title: string; month: string; day: string; time: string; description: string };
+
+// Edit this list as events are announced. Past events can simply be removed.
+const upcoming: Upcoming[] = [
+  {
+    title: "Recfest",
+    month: "Jan",
+    day: "15",
+    time: "Jan 15th, 2025, 5 PM – 7 PM",
+    description:
+      "Join us for Recfest! In case you missed us at Involvement Fair, this is another chance to connect with our club and get excited for pickleball.",
+  },
+  {
+    title: "Spring Tryouts",
+    month: "Jan",
+    day: "17",
+    time: "Jan 17th, 2025, 12 PM – 4 PM",
+    description:
+      "It's the big day! Come to Powerplay at 19401 Main St, Carson, CA 90248 ($15 upfront fee) to try out for our competitive team. This is your opportunity to showcase your skills, so make sure to bring your water bottle, tennis shoes, and paddles. There are $10 demo paddles if needed.",
+  },
+];
+
+type Session = { day: number; start: number; end: number };
+type Recurring = {
+  key: "rec" | "club";
+  title: string;
+  location: string;
+  sessions: Session[];
+  schedule: { days: string; time: string }[];
+  description: string;
+  note?: string;
+};
+
+// day: 0 = Monday … 6 = Sunday; start/end in 24h hours
+const recurring: Recurring[] = [
+  {
+    key: "club",
+    title: "Club-hosted open play",
+    location: "PE South Gym (Room 210)",
+    sessions: [
+      { day: 0, start: 20, end: 22 },
+      { day: 2, start: 21, end: 23 },
+    ],
+    schedule: [
+      { days: "Monday", time: "8:00 PM – 10:00 PM" },
+      { days: "Wednesday", time: "9:00 PM – 11:00 PM" },
+    ],
+    description:
+      "Our club's own open play. All skill levels are welcome, and we encourage you to join us at the PE South Gym for some late-night pickling!",
+    note: "Until 1/26, open plays will be held 8–10 PM Mondays and Wednesdays at Lyon Center Court C.",
+  },
+  {
+    key: "rec",
+    title: "Open recreation",
+    location: "Lyon Center Court C",
+    sessions: [
+      { day: 0, start: 11, end: 14 },
+      { day: 1, start: 11, end: 14 },
+      { day: 2, start: 11, end: 14 },
+      { day: 3, start: 11, end: 14 },
+      { day: 4, start: 12, end: 14 },
+      { day: 5, start: 16, end: 19 },
+    ],
+    schedule: [
+      { days: "Monday – Thursday", time: "11:00 AM – 2:00 PM" },
+      { days: "Friday", time: "12:00 PM – 2:00 PM" },
+      { days: "Saturday", time: "4:00 PM – 7:00 PM" },
+    ],
+    description:
+      "USC Recreational Sports-hosted pickleball in the Lyon Center. Court C is upstairs behind the basketball courts, and this is the only on-campus weekend pickleball. Drop by for some casual games!",
+  },
+];
+
+const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const firstHour = 10;
+const lastHour = 23;
+const hours = Array.from({ length: lastHour - firstHour + 1 }, (_, i) => firstHour + i);
+
+const fmt = (h: number) => `${h % 12 === 0 ? 12 : h % 12}${h < 12 ? "a" : "p"}`;
 
 export default function Page() {
-
-    return (
-        <div className={styles.pageWrapper}>
-            <div className={styles.container}>
-                <h1 className={styles.pageTitle}>Upcoming Events</h1>
-                
-                <div className={styles.timeline}>
-                    {/* TODO: Edit date to fit actual time*/}
-                    {/* <div className={styles.timelineItem}>
-                        <div className={styles.timelineDot}></div>
-                        <div className={styles.eventCard}>
-                            <h3 className={styles.eventTitle}>First Open Play</h3>
-                            <p className={styles.eventDate}>August 25th, 2025 (8 PM - 10 PM)</p>
-                            <p className={styles.eventDescription}>
-                                We will be at the PHED Gym at Room 201 to kick off our open plays for this semester! We&apos;d  love to see you there, and have space for those who want destroy the competition or just want to relax.
-                            </p>
-                        </div>
-                    </div>
-                    <div className={styles.timelineItem}>
-                        <div className={styles.timelineDot}></div>
-                        <div className={styles.eventCard}>
-                            <h3 className={styles.eventTitle}>Involvement Fair</h3>
-                            <p className={styles.eventDate}>August 26th, 2025 (11 AM - 2 PM)</p>
-                            <p className={styles.eventDescription}>
-                                Come visit our table at Involvement Fair! Whether you&apos;re a familiar face or someone new, 
-                                we&apos;d love to chat and talk about the new pickleball season.
-                            </p>
-                        </div>
-                    </div> */}
-
-                    <div className={styles.timelineItem}>
-                        <div className={styles.timelineDot}></div>
-                        <div className={styles.eventCard}>
-                            <h3 className={styles.eventTitle}>Recfest</h3>
-                            <p className={styles.eventDate}>Jan 15th, 2025 (5 PM - 7 PM)</p>
-                            <p className={styles.eventDescription}>
-                                Join us for Recfest! In case you missed us at Involvement Fair, this is another chance 
-                                to connect with our club and get excited for pickleball.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className={styles.timelineItem}>
-                        <div className={styles.timelineDot}></div>
-                        <div className={styles.eventCard}>
-                            <h3 className={styles.eventTitle}>Spring Tryouts</h3>
-                            <p className={styles.eventDate}>Jan 17st, 2025 (12 PM - 4 PM)</p>
-                            <p className={styles.eventDescription}>
-                                It&apos;s the big day! Come to Powerplay at 19401 Main St, Carson, CA 90248 ($15 upfront fee) to tryout for our competitive team. This is your opportunity to showcase your skills, so make sure to bring your waterbottle, tennis shoes, and paddles. There are $10 demo paddles if needed.
-                            </p>
-                        </div>
-                    </div>
-                    {/* <div className={styles.timelineItem}>
-                        <div className={styles.timelineDot}></div>
-                        <div className={styles.eventCard}>
-                            <h3 className={styles.eventTitle}>Spring Semester Open Play Social</h3>
-                            <p className={styles.eventDate}>???</p>
-                            <p className={styles.eventDescription}>
-                                Get ready for our fall semester tournament. Bring your sunscreen, best paddle, and some competitive spirit, because things are about to get red-hot! More details coming soon.
-                            </p>
-                        </div>
-                    </div> */}
-                </div>
-
-                <div className={styles.futureEventsIndicator}>
-                    More events coming soon...
-                </div>
-            </div>
-
-            <div className={styles.recurringEventsSection}>
-                <h2 className={styles.sectionTitle}>Recurring Events</h2>
-                <p className={styles.sectionSubtitle}>Join us for our regular weekly activities</p>
-                
-                <div className={styles.recurringEventsGrid}>
-                    <div className={styles.recurringEventCard}>
-                        <div className={styles.eventCardHeader}>
-                            <h3 className={styles.recurringEventTitle}>Open Recreation</h3>
-                            {/* <div className={`${styles.eventTypeBadge} ${styles.openRec}`}>
-                                Drop-in Welcome
-                            </div> */}
-                        </div>
-                        
-                        <div className={styles.eventSchedule}>
-                            <div className={styles.scheduleItem}>
-                                <span className={styles.dayLabel}>Monday - Thursday</span>
-                                <span className={styles.timeLabel}>11:00 AM - 2:00 PM</span>
-                            </div>
-                            <div className={styles.scheduleItem}>
-                                <span className={styles.dayLabel}>Friday</span>
-                                <span className={styles.timeLabel}>12:00 PM - 2:00 PM</span>
-                            </div>
-                            <div className={styles.scheduleItem}>
-                                <span className={styles.dayLabel}>Saturday</span>
-                                <span className={styles.timeLabel}>4:00 PM - 7:00 PM</span>
-                            </div>
-                        </div>
-                        
-                        <p className={styles.eventDescription}>
-                            USC Recreational Sports-hosted pickleball in the Lyon Center. Court C is located upstairs in the back of the basketball courts, and this is the only on-campus weekend pickleball event. Drop by to play some casual pickleball!
-                        </p>
-                        
-                        <div className={styles.eventLocation}>
-                            <span className={styles.locationIcon}>📍</span>
-                            <span>Lyon Center Court C</span>
-                        </div>
-
-                        {/* <div className={styles.eventNote}>
-                            <span className={styles.noteIcon}>⚠️</span>
-                            <span>Lyon Center hours are under contention - please note that the Lyon Center website shows two different sets of times.</span>
-                        </div> */}
-
-                        
-                    </div>
-
-                    <div className={styles.recurringEventCard}>
-                        <div className={styles.eventCardHeader}>
-                            <h3 className={styles.recurringEventTitle}>Club-hosted Open Play</h3>
-                        </div>
-                        
-                        <div className={styles.eventSchedule}>
-                            <div className={styles.scheduleItem}>
-                                <span className={styles.dayLabel}>Monday</span>
-                                <span className={styles.timeLabel}>8:00 PM - 10:00 PM</span>
-                            </div>
-                            <div className={styles.scheduleItem}>
-                                <span className={styles.dayLabel}>Wednesday</span>
-                                <span className={styles.timeLabel}>9:00 PM - 11:00 PM</span>
-                            </div>
-                        </div>
-                        
-                        <p className={styles.eventDescription}>
-                            This is our club&apos;s own pickleball open play event. All skill levels are welcome, and we encourage you to join us at the PED South Gym to have some late night pickling!
-                        </p>
-                        
-                        <div className={styles.eventLocation}>
-                            <span className={styles.locationIcon}>📍</span>
-                            <span>PE South Gym (Room 210)</span>
-                        </div>
-
-                        <div className={styles.eventNote}>
-                            <span className={styles.noteIcon}>⚠️</span>
-                            <span>Until 1/26, Open Plays will be held 8-10 PM Mondays and Wednesdays at Lyon Center Court C</span>
-                        </div>
-                    </div>
-
-                    {/* <div className={styles.recurringEventCard}>
-                        <div className={styles.eventCardHeader}>
-                            <h3 className={styles.recurringEventTitle}>Intramural League</h3>
-                        </div>
-                        
-                        <div className={styles.eventSchedule}>
-                            <div className={styles.scheduleItem}>
-                                <span className={styles.dayLabel}>Monday - Wednesday</span>
-                                <span className={styles.timeLabel}>5:00 PM - 11:00 PM</span>
-                            </div>
-                            
-                        </div>
-                        
-                        <p className={styles.eventDescription}>
-                            Competitive tournament organized by Recreational Sports. New players are encouraged to join, so pair up with your friends; registration instructions can be found at https://recsports.usc.edu/programs-and-classes/competitive-sports/intramural-sports/.
-                        </p>
-                        
-                        <div className={styles.eventLocation}>
-                            <span className={styles.locationIcon}>📍</span>
-                            <span>Lyon Center Court C</span>
-                        </div>
-                        
-                        <div className={styles.eventNote}>
-                            <span className={styles.noteIcon}>🗓</span>
-                            <span>Lasts 9/8 - 10/13 </span>
-                        </div>
-                    </div> */}
-
-                    
-                </div>
-                
-                <div className={styles.generalNote}>
-                    <span className={styles.noteIcon}>📍</span>
-                    <span><strong>Location Updates:</strong> Check <a style={{ color: "blue" }} href="https://groupme.com/join_group/96038579/dmWghOg2" target="_blank" rel="noopener noreferrer">GroupMe</a> for any last-minute changes to locations or times</span>
-                </div>
-            </div>
-
+  return (
+    <>
+      <section className={styles.hero}>
+        <div className={styles.inner}>
+          <h1 className={styles.heroTitle}>
+            <span>Events</span>
+          </h1>
+          <p className={styles.heroSub}>Tryouts, socials, and every weekly session where you can pick up a paddle.</p>
         </div>
-    );
+      </section>
+
+      {/* UPCOMING */}
+      <section className={styles.upcoming}>
+        <div className={styles.inner}>
+          <h2 className={styles.sectionTitle}>Coming up</h2>
+          <ol className={styles.eventList}>
+            {upcoming.map((e, i) => (
+              <Reveal as="li" key={e.title} className={styles.event} delay={i * 0.08}>
+                <div className={styles.date} aria-hidden="true">
+                  <span className={styles.month}>{e.month}</span>
+                  <span className={styles.day}>{e.day}</span>
+                </div>
+                <div className={styles.eventBody}>
+                  <h3 className={styles.eventTitle}>{e.title}</h3>
+                  <p className={styles.eventTime}>{e.time}</p>
+                  <p className={styles.eventDesc}>{e.description}</p>
+                </div>
+              </Reveal>
+            ))}
+          </ol>
+          <p className={styles.more}>
+            <span className={styles.dots} aria-hidden="true"><i /><i /><i /></span>
+            More events coming soon
+          </p>
+        </div>
+      </section>
+
+      {/* WEEKLY */}
+      <section className={styles.weekly}>
+        <div className={styles.inner}>
+          <div className={styles.weeklyHead}>
+            <h2 className={styles.weeklyTitle}>Every week</h2>
+            <ul className={styles.legend}>
+              {recurring.map((r) => (
+                <li key={r.key} data-kind={r.key}>{r.title}</li>
+              ))}
+            </ul>
+          </div>
+
+          <Reveal className={styles.calendarWrap}>
+            <div
+              className={styles.calendar}
+              role="img"
+              aria-label="Weekly schedule: club open play Monday 8 to 10 PM and Wednesday 9 to 11 PM; open recreation Monday to Thursday 11 AM to 2 PM, Friday noon to 2 PM, Saturday 4 to 7 PM."
+              style={{ "--rows": hours.length - 1 } as React.CSSProperties}
+            >
+              <div className={styles.corner} />
+              {days.map((d, i) => (
+                <div key={d} className={styles.dayHead} style={{ gridColumn: i + 2 }}>{d}</div>
+              ))}
+              {hours.slice(0, -1).map((h, i) => (
+                <div key={h} className={styles.hour} style={{ gridRow: i + 2 }}>{fmt(h)}</div>
+              ))}
+              {days.map((d, i) => (
+                <div key={`col-${d}`} className={styles.col} style={{ gridColumn: i + 2 }} />
+              ))}
+              {recurring.flatMap((r) =>
+                r.sessions.map((s, j) => (
+                  <div
+                    key={`${r.key}-${s.day}`}
+                    className={styles.block}
+                    data-kind={r.key}
+                    style={{
+                      gridColumn: s.day + 2,
+                      gridRow: `${s.start - firstHour + 2} / ${s.end - firstHour + 2}`,
+                      "--j": j,
+                    } as React.CSSProperties}
+                  >
+                    <span>{r.key === "club" ? "Club" : "Open rec"}</span>
+                    <span className={styles.blockTime}>{fmt(s.start)}–{fmt(s.end)}</span>
+                  </div>
+                ))
+              )}
+            </div>
+          </Reveal>
+
+          <div className={styles.details}>
+            {recurring.map((r, i) => (
+              <Reveal as="article" key={r.key} className={styles.detail} data-kind={r.key} delay={i * 0.1}>
+                <h3 className={styles.detailTitle}>{r.title}</h3>
+                <dl className={styles.schedule}>
+                  {r.schedule.map((s) => (
+                    <div key={s.days}>
+                      <dt>{s.days}</dt>
+                      <dd>{s.time}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <p>{r.description}</p>
+                <p className={styles.location}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="currentColor" />
+                    <circle cx="12" cy="10" r="2.6" fill="var(--loc-dot)" />
+                  </svg>
+                  {r.location}
+                </p>
+                {r.note && <p className={styles.note}>{r.note}</p>}
+              </Reveal>
+            ))}
+          </div>
+
+          <p className={styles.groupme}>
+            Locations and times can change last minute. Check{" "}
+            <a href="https://groupme.com/join_group/96038579/dmWghOg2" target="_blank" rel="noopener noreferrer">
+              our GroupMe
+            </a>{" "}
+            before you head over.
+          </p>
+        </div>
+      </section>
+    </>
+  );
 }

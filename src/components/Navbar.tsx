@@ -1,82 +1,92 @@
-"use client"; 
+"use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from 'react';
-import { usePathname } from 'next/navigation';
-import styles from './Navbar.module.css';
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import styles from "./Navbar.module.css";
 
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/events", label: "Events" },
+];
 
 export default function Navbar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setIsOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen]);
 
   return (
-    <nav className={styles.navbar}>
-      {/* Desktop menu always visible */}
-      <div className={styles.desktopMenu}>
-        <div className={styles.logoCircle}>
-          <Image
-            src="/images/club_logo.jpg"
-            alt="Trojan Pickleball Club"
-            width={50}
-            height={50}
-            style={{ objectFit: 'cover' }}
-          />
-        </div>
-        {/* <Link href="/" className={styles.brand}>
-          Trojan Pickleball Club
-        </Link> */}
+    <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ""} ${isOpen ? styles.menuOpen : ""}`}>
+      <nav className={styles.inner} aria-label="Main">
+        <Link href="/" className={styles.brand} aria-label="Trojan Pickleball Club home">
+          <span className={styles.logo}>
+            <Image src="/images/club_logo.jpg" alt="" width={44} height={44} priority />
+          </span>
+          <span className={styles.wordmark}>
+            Trojan<br />Pickleball
+          </span>
+        </Link>
 
-        <div className={styles.navLinks}>
-          <Link href="/" className={`${styles.navLink} ${pathname === '/' ? styles.active : ''}`}>
-            Home
-          </Link>
-          <Link href="/about" className={`${styles.navLink} ${pathname === '/about' ? styles.active : ''}`}>
-            About
-          </Link>
-          <Link href="/events" className={`${styles.navLink} ${pathname === '/events' ? styles.active : ''}`}>
-            Events
-          </Link>
-          <Link href="/join" className={`${styles.navLink} ${styles.followUsBtn} ${pathname === '/join' ? styles.active : ''}`}>
-            Follow Us
+        <div className={styles.links}>
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={styles.link}
+              aria-current={pathname === link.href ? "page" : undefined}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link href="/join" className={styles.cta} aria-current={pathname === "/join" ? "page" : undefined}>
+            Join us
           </Link>
         </div>
-      </div>
-      
-      {/* Hamburger button - only visible on mobile */}
-      <button 
-        className={`${styles.hamburger} ${isMobileMenuOpen ? styles.open : ''}`}
-        onClick={toggleMobileMenu}
-        aria-label="Toggle mobile menu"
+
+        <button
+          className={styles.hamburger}
+          onClick={() => setIsOpen((open) => !open)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
         >
-        <div className={styles.hamburgerLine}></div>
-        <div className={styles.hamburgerLine}></div>
-        <div className={styles.hamburgerLine}></div>
-      </button>
-      
-      {/* Mobile menu - conditionally visible */}
-      {isMobileMenuOpen && (
-        <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.open : ''}`}>
-            <div className={styles.mobileNavLinks}>
-                <Link href="/" className={`${styles.mobileNavLink} ${pathname === '/' ? styles.active : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
-                Home
-                </Link>
-                <Link href="/about" className={`${styles.mobileNavLink} ${pathname === '/about' ? styles.active : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
-                About
-                </Link>
-                <Link href="/events" className={`${styles.mobileNavLink} ${pathname === '/events' ? styles.active : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
-                Events
-                </Link>
-                <Link href="/join" className={`${styles.mobileNavLink} ${styles.mobileFollowUsBtn} ${pathname === '/join' ? styles.active : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
-                Join Us
-                </Link>
-            </div>
-        </div>
-      )}
-    </nav>
+          <span />
+          <span />
+        </button>
+      </nav>
+
+      <div id="mobile-menu" className={styles.mobileMenu} hidden={!isOpen}>
+        <div className={styles.mobileCourt} aria-hidden="true" />
+        <ul className={styles.mobileLinks}>
+          {[...links, { href: "/join", label: "Join us" }].map((link, i) => (
+            <li key={link.href} style={{ "--i": i } as React.CSSProperties}>
+              <Link href={link.href} aria-current={pathname === link.href ? "page" : undefined}>
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </header>
   );
 }

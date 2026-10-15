@@ -1,0 +1,142 @@
+.wrap {
+  position: relative;
+}
+
+.rows {
+  list-style: none;
+  border-top: 2px solid var(--ink);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 110px 1fr minmax(0, 320px) 48px;
+  align-items: center;
+  gap: 24px;
+  padding: 28px 8px;
+  border-bottom: 2px solid var(--ink);
+  position: relative;
+  isolation: isolate;
+  transition: color 0.35s var(--ease-out), padding 0.45s var(--ease-out);
+}
+
+.row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--cardinal);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.45s var(--ease-out);
+}
+
+.row:hover,
+.row:focus-visible {
+  color: var(--white);
+  padding-left: 28px;
+}
+
+.row:hover::before,
+.row:focus-visible::before {
+  transform: none;
+}
+
+.level {
+  font-family: var(--font-d);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cardinal);
+  transition: color 0.3s;
+}
+
+.row:hover .level,
+.row:focus-visible .level {
+  color: var(--gold);
+}
+
+.title {
+  font-family: var(--font-d);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 5vw, 4.25rem);
+  line-height: 0.95;
+}
+
+.detail {
+  font-size: 0.98rem;
+  line-height: 1.45;
+  opacity: 0.8;
+}
+
+.arrow {
+  transition: transform 0.45s var(--ease-snap);
+}
+
+.row:hover .arrow,
+.row:focus-visible .arrow {
+  transform: rotate(45deg) scale(1.1);
+  color: var(--gold);
+}
+
+.preview {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 320px;
+  border-radius: 14px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transform: translate(calc(var(--x, 0px) - 50%), calc(var(--y, 0px) - 50%)) rotate(-6deg) scale(0.6);
+  transition: opacity 0.3s, transform 0.5s var(--ease-out);
+  box-shadow: 10px 10px 0 var(--gold);
+}
+
+.previewOn {
+  opacity: 1;
+  transform: translate(calc(var(--x, 0px) - 50%), calc(var(--y, 0px) - 50%)) rotate(-6deg) scale(1);
+}
+
+.preview img {
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.preview img.shown {
+  opacity: 1;
+}
+
+@media (hover: none), (max-width: 900px) {
+  .preview {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .row {
+    grid-template-columns: 1fr 40px;
+    gap: 6px 16px;
+  }
+
+  .level {
+    grid-column: 1;
+  }
+
+  .title {
+    grid-column: 1;
+  }
+
+  .detail {
+    grid-column: 1;
+  }
+
+  .arrow {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+  }
+}

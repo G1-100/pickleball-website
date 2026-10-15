@@ -1,150 +1,129 @@
-import styles from './page.module.css';
+import styles from "./page.module.css";
+import CountUp from "@/components/CountUp";
+import Reveal from "@/components/Reveal";
+
+const stats = [
+  { value: 1000, suffix: "+", label: "Instagram followers" },
+  { value: 500, suffix: "+", label: "GroupMe members" },
+  { value: 7, suffix: "", label: "Sponsor partners" },
+];
+
+const zones = [
+  { href: "#online", title: "Connect online", text: "Join our digital community and stay connected with fellow players.", action: "Follow us" },
+  { href: "#students", title: "Students", text: "From beginner to competitive player, find your place in the club.", action: "Join now" },
+  { href: "#sponsors", title: "Sponsors", text: "Partner with us and reach an engaged student-athlete community.", action: "Partner with us" },
+];
 
 export default function Page() {
-    return (
+  return (
     <>
-    <div className={styles.page_content}>
-        {/* Hero Section */}
-        <section className={styles.heroSection}>
-            <h1 className={styles.heroTitle}>Get Involved with Trojan Pickleball</h1>
-            <p className={styles.heroSubtitle}>
-                Join USC&apos;s fastest-growing club sport community. Whether you&apos;re a student, community member, 
-                or potential sponsor, we have opportunities for everyone to be part of our growing family.
-            </p>
-            <div className={styles.heroStats}>
-                <div className={styles.stat}>
-                    <span className={styles.statNumber}>1000+</span>
-                    <span className={styles.statLabel}>Instagram Followers</span>
-                </div>
-                <div className={styles.stat}>
-                    <span className={styles.statNumber}>500+</span>
-                    <span className={styles.statLabel}>GroupMe Members</span>
-                </div>
-                <div className={styles.stat}>
-                    <span className={styles.statNumber}>4</span>
-                    <span className={styles.statLabel}>Sponsor Partners</span>
-                </div>
-            </div>
-        </section>
+      <section className={styles.hero}>
+        <div className={styles.inner}>
+          <h1 className={styles.heroTitle}>
+            <span>Get</span> <span>involved</span>
+          </h1>
+          <p className={styles.heroSub}>
+            Join USC&apos;s fastest-growing club sport community. Whether you&apos;re a student, community member, or
+            potential sponsor, there&apos;s a place for you in the Trojan Pickleball family.
+          </p>
+          <dl className={styles.stats}>
+            {stats.map((s) => (
+              <div key={s.label} className={styles.stat}>
+                <dt>{s.label}</dt>
+                <dd><CountUp to={s.value} suffix={s.suffix} /></dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
 
-        {/* Three Feature Boxes */}
-        <section className={styles.featuresSection}>
-            <div className={styles.featureBox}>
-                <div className={styles.featureIcon}>📱</div>
-                <h3 className={styles.featureTitle}>Connect Online</h3>
-                <p className={styles.featureDescription}>
-                    Join our vibrant digital community and stay connected with fellow players
-                </p>
-                <a href="#online" className={styles.featureButton}>Follow Us</a>
-            </div>
-            
-            <div className={styles.featureBox}>
-                <div className={styles.featureIcon}>🎓</div>
-                <h3 className={styles.featureTitle}>Student Opportunities</h3>
-                <p className={styles.featureDescription}>
-                    From beginner to competitive player, find your place in our club
-                </p>
-                <a href="#students" className={styles.featureButton}>Join Now</a>
-            </div>
-            
-            <div className={styles.featureBox}>
-                <div className={styles.featureIcon}>🤝</div>
-                <h3 className={styles.featureTitle}>Sponsor Partnerships</h3>
-                <p className={styles.featureDescription}>
-                    Partner with us and reach an engaged student athlete community
-                </p>
-                <a href="#sponsors" className={styles.featureButton}>Partner With Us</a>
-            </div>
-        </section>
+      {/* three zones of a court */}
+      <nav className={styles.zonesWrap} aria-label="Ways to get involved">
+        <div className={styles.zones}>
+          {zones.map((z) => (
+            <a key={z.href} href={z.href} className={styles.zone}>
+              <span className={styles.zoneTitle}>{z.title}</span>
+              <span className={styles.zoneText}>{z.text}</span>
+              <span className={styles.zoneAction}>{z.action}</span>
+            </a>
+          ))}
+        </div>
+      </nav>
 
-        {/* Detailed Content Sections */}
-        <section className={styles.detailedSection}>
-            <div className={styles.contentSection} id="online">
-                <h2 className={styles.sectionTitle}>Connect Online</h2>
-                <div className={styles.sectionContent}>
-                    <div className={styles.subsection}>
-                        <h3>Follow us on Instagram @trojanpickleball</h3>
-                        <ul>
-                            <li>See the highlights from practices and tournaments</li>
-                            <li>Stay updated on club announcements and event reminders</li>
-                            <li>Join giveaways get free pickleball gear</li>
-                        </ul>
-                    </div>
-                    
-                    <div className={styles.subsection}>
-                        <h3>Join our GroupMe community (500+ members)</h3>
-                        <ul>
-                            <li>Real-time coordination for practices and competitions</li>
-                            <li>Get help about equipment, rules, or techniques</li>
-                            <li>Find practice partners and form tournament teams</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+      {/* ONLINE */}
+      <section className={styles.section} id="online">
+        <div className={styles.inner}>
+          <h2 className={styles.sectionTitle}>Connect online</h2>
+          <div className={styles.socialGrid}>
+            <Reveal as="article" className={`${styles.panel} ${styles.instagram}`}>
+              <h3>Instagram</h3>
+              <p className={styles.handle}>@trojanpickleball</p>
+              <ul className={styles.ballList}>
+                <li>See the highlights from practices and tournaments</li>
+                <li>Stay updated on club announcements and event reminders</li>
+                <li>Join giveaways to win free pickleball gear</li>
+              </ul>
+              <a className="btn btn-solid" href="https://instagram.com/trojanpickleball" target="_blank" rel="noopener noreferrer">
+                Follow on Instagram
+              </a>
+            </Reveal>
+            <Reveal as="article" className={`${styles.panel} ${styles.groupme}`} delay={0.1}>
+              <h3>GroupMe</h3>
+              <p className={styles.handle}>500+ members</p>
+              <ul className={styles.ballList}>
+                <li>Real-time coordination for practices and competitions</li>
+                <li>Get help with equipment, rules, or technique</li>
+                <li>Find practice partners and form tournament teams</li>
+              </ul>
+              <a className="btn" href="https://groupme.com/join_group/96038579/dmWghOg2" target="_blank" rel="noopener noreferrer">
+                Join the GroupMe
+              </a>
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
-            <div className={styles.contentSection} id="students">
-                <h2 className={styles.sectionTitle}>Student Opportunities</h2>
-                <div className={styles.sectionContent}>
-                    <div className={styles.subsection}>
-                        <h3>Get involved at any level</h3>
-                        <ul>
-                            <li>Participate in our open plays and tournaments</li>
-                            <li>Tryout for the competitive team and play at the national level</li>
-                            <li>Introduce your friends to pickleball and help us grow the community</li>
-                            <li>Apply to join the E-Board <a href='https://forms.gle/GZLmCxfx4jjSBgqQ9' style={{ color: 'blue' }}>here</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+      {/* STUDENTS */}
+      <section className={`${styles.section} ${styles.students}`} id="students">
+        <div className={`${styles.inner} ${styles.studentsGrid}`}>
+          <h2 className={styles.sectionTitle}>Get in the game at any level</h2>
+          <Reveal className={styles.studentsBody}>
+            <ul className={styles.ballList}>
+              <li>Play in our open plays and tournaments</li>
+              <li>Try out for the competitive team and play at the national level</li>
+              <li>Introduce your friends to pickleball and help the community grow</li>
+              <li>Help run the club by joining the e-board</li>
+            </ul>
+            <a className="btn btn-solid" href="https://forms.gle/GZLmCxfx4jjSBgqQ9" target="_blank" rel="noopener noreferrer">
+              Apply to the e-board
+            </a>
+          </Reveal>
+        </div>
+      </section>
 
-            <div className={styles.contentSection} id="sponsors">
-                <h2 className={styles.sectionTitle}>Sponsorship Opportunities</h2>
-                <div className={styles.sectionContent}>
-                    
-                    <div className={styles.subsection}>
-                        <h3>What sponsors get:</h3>
-                        <ul>
-                            <li>Logo placement on team jerseys</li>
-                            <li>Social media shoutouts</li>
-                            <li>Product sampling opportunities at practices and events</li>
-                            <li>Access to our engaged student athlete demographic</li>
-                        </ul>
-                    </div>
+      {/* SPONSORS */}
+      <section className={`${styles.section} ${styles.sponsors}`} id="sponsors">
+        <div className={styles.inner}>
+          <h2 className={styles.sectionTitle}>Sponsor the club</h2>
 
-                    <div className={styles.subsection}>
-                        <h3>Sponsorship tiers:</h3>
-                        <div className={styles.sponsorshipTiers}>
-                            <div className={styles.tier}>
-                                <h4>Title Sponsor ($2,500+)</h4>
-                                <p>Generous naming rights, premium logo placement, VIP seating and speaking opportunities at tournaments, dedicated social media spotlights, marketing at student fairs, and more!</p>
-                            </div>
+          <div className={styles.getsGrid}>
+            <p className={styles.getsLead}>What sponsors get</p>
+            <ul className={styles.gets}>
+              <li>Logo placement on team jerseys</li>
+              <li>Social media shoutouts</li>
+              <li>Product sampling at practices and events</li>
+              <li>Access to our engaged student-athlete audience</li>
+            </ul>
+          </div>
 
-                            <div className={styles.tier}>
-                                <h4>Premium Sponsor ($1,000+)</h4>
-                                <p>Logo on team jerseys and tournament banners, social media features, product sampling at events, and booth space at select tournaments</p>
-                            </div>
-
-                            <div className={styles.tier}>
-                                <h4>Supporting Sponsor ($250+)</h4>
-                                <p>Logo on website and social media recognition</p>
-                            </div>
-                            
-                            <div className={styles.tier}>
-                                <h4>Equipment Sponsor</h4>
-                                <p>Exclusive gear/product partnerships, co-branded merchandise</p>
-                            </div>
-                            
-                            <div className={styles.tier}>
-                                <h4>Event Sponsor</h4>
-                                <p>Tournament naming rights, prize sponsorship</p>
-                            </div>
-                            
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    </>)
+          <div className={styles.contact}>
+            <p>Interested in partnering with us?</p>
+            <a className="btn btn-solid" href="mailto:trojanpickleball@gmail.com?subject=Sponsorship">
+              Email trojanpickleball@gmail.com
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }

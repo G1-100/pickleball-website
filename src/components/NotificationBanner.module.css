@@ -3,78 +3,66 @@
   right: 20px;
   bottom: 20px;
   z-index: 900;
-  max-width: min(380px, calc(100vw - 32px));
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
   align-items: center;
-  gap: 12px 14px;
-  padding: 18px 18px 18px 22px;
-  background: var(--gold);
-  color: var(--ink);
-  border-radius: 18px 18px 18px 4px;
-  box-shadow: 8px 8px 0 var(--cardinal);
-  animation: popIn 0.7s var(--ease-snap) both;
-}
-
-.message {
-  font-weight: 600;
-  font-size: 0.98rem;
-  line-height: 1.35;
-}
-
-.linkButton {
-  grid-column: 1;
-  justify-self: start;
-  font-family: var(--font-d);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  font-size: 1.05rem;
-  padding: 8px 16px 7px;
+  gap: 4px;
+  max-width: calc(100vw - 32px);
+  padding: 4px 4px 4px 16px;
+  border: 1px solid var(--line-strong);
   border-radius: 999px;
-  background: var(--ink);
-  color: var(--gold);
-  transition: background-color 0.2s, color 0.2s;
+  background: rgba(17, 19, 24, 0.8);
+  backdrop-filter: blur(14px);
+  font-size: 0.85rem;
+  animation: rise 1s var(--ease) both;
 }
 
-.linkButton:hover {
-  background: var(--cardinal);
-  color: var(--white);
+.link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 4px;
+  color: var(--fg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.closeButton {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  align-self: start;
-  width: 32px;
-  height: 32px;
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ball);
+  box-shadow: 0 0 10px var(--ball);
+}
+
+.close {
+  flex: none;
+  width: 30px;
+  height: 30px;
   display: grid;
   place-items: center;
   border: none;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.08);
-  color: var(--ink);
+  background: transparent;
+  color: var(--muted);
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.3s var(--ease-out);
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.closeButton:hover {
-  background: rgba(0, 0, 0, 0.16);
-  transform: rotate(90deg);
+.close:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--fg);
 }
 
-@keyframes popIn {
+@keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(40px) rotate(4deg) scale(0.9);
-  }
-}
-
-@media (max-width: 520px) {
-  .banner {
-    right: 16px;
-    left: 16px;
-    bottom: 16px;
-    max-width: none;
+    transform: translateY(20px);
   }
 }

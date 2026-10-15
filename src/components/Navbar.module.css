@@ -2,18 +2,14 @@
   position: fixed;
   inset: 0 0 auto;
   z-index: 1000;
-  color: var(--white);
-  transition: background-color 0.4s var(--ease-out), box-shadow 0.4s;
+  transition: background-color 0.5s var(--ease), border-color 0.5s var(--ease);
+  border-bottom: 1px solid transparent;
 }
 
-.scrolled {
-  background: color-mix(in srgb, var(--cardinal-deep) 88%, transparent);
-  backdrop-filter: blur(14px) saturate(1.4);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12);
-}
-
-.menuOpen {
-  background: var(--cardinal-deep);
+.solid {
+  background: rgba(10, 11, 13, 0.72);
+  backdrop-filter: blur(16px);
+  border-bottom-color: var(--line);
 }
 
 .inner {
@@ -24,7 +20,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
   position: relative;
   z-index: 2;
 }
@@ -32,203 +27,126 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .logo {
-  display: block;
-  width: 44px;
-  height: 44px;
   border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid var(--gold);
-  transition: transform 0.6s var(--ease-snap);
-}
-
-.logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  filter: grayscale(1) contrast(1.1);
+  transition: filter 0.5s var(--ease);
 }
 
 .brand:hover .logo {
-  transform: rotate(-20deg) scale(1.08);
-}
-
-.wordmark {
-  font-family: var(--font-d);
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: 1.05rem;
-  line-height: 0.95;
-  letter-spacing: 0.04em;
+  filter: none;
 }
 
 .links {
+  list-style: none;
   display: flex;
-  align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .link {
-  position: relative;
-  font-family: var(--font-d);
-  font-weight: 800;
-  font-size: 1.15rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  display: block;
   padding: 8px 14px;
+  font-family: var(--font-m);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.3s;
+  position: relative;
 }
 
-/* active / hover marker: a small ball that drops in under the link */
-.link::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -2px;
-  width: 8px;
-  height: 8px;
-  margin-left: -4px;
-  border-radius: 50%;
-  background: var(--ball);
-  transform: translateY(-14px) scale(0);
-  opacity: 0;
-  transition: transform 0.5s var(--ease-snap), opacity 0.2s;
-}
-
-.link:hover::after,
-.link[aria-current="page"]::after {
-  transform: none;
-  opacity: 1;
+.link:hover {
+  color: var(--fg);
 }
 
 .link[aria-current="page"] {
-  color: var(--gold);
+  color: var(--fg);
 }
 
-.cta {
-  margin-left: 10px;
-  font-family: var(--font-d);
-  font-weight: 800;
-  font-size: 1.15rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 9px 20px 8px;
-  border-radius: 999px;
-  background: var(--gold);
-  color: var(--ink);
-  transition: transform 0.3s var(--ease-snap), background-color 0.2s;
-}
-
-.cta:hover {
-  transform: rotate(-3deg) scale(1.06);
-  background: var(--white);
-}
-
-.cta[aria-current="page"] {
-  box-shadow: 0 0 0 3px var(--cardinal-deep), 0 0 0 5px var(--gold);
-}
-
-.hamburger {
-  display: none;
-  width: 48px;
-  height: 48px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-  position: relative;
-}
-
-.hamburger span {
+.link[aria-current="page"]::before {
+  content: "";
   position: absolute;
-  left: 13px;
-  width: 18px;
-  height: 2px;
-  background: var(--white);
-  transition: transform 0.4s var(--ease-out), top 0.4s var(--ease-out);
+  left: 3px;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  margin-top: -2px;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
-.hamburger span:first-child {
-  top: 18px;
-}
-
-.hamburger span:last-child {
-  top: 26px;
-}
-
-.menuOpen .hamburger span:first-child {
-  top: 22px;
-  transform: rotate(45deg);
-}
-
-.menuOpen .hamburger span:last-child {
-  top: 22px;
-  transform: rotate(-45deg);
+.toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--fg);
+  font-family: var(--font-m);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 9px 16px;
+  cursor: pointer;
 }
 
 .mobileMenu {
   position: fixed;
   inset: 0;
   z-index: 1;
-  background: var(--cardinal-deep);
-  padding: calc(var(--nav-h) + 40px) var(--gutter) 40px;
-  overflow: hidden;
+  background: var(--bg);
+  padding: calc(var(--nav-h) + 48px) var(--gutter) 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .mobileMenu[hidden] {
   display: none;
 }
 
-.mobileCourt {
-  position: absolute;
-  inset: 20% -30% -10% 30%;
-  border: 3px solid rgba(255, 255, 255, 0.12);
-  transform: rotate(-12deg);
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12)) 0 35% / 100% 3px no-repeat,
-    linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12)) 50% 0 / 3px 35% no-repeat;
-}
-
-.mobileLinks {
+.mobileMenu ul {
   list-style: none;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  border-top: 1px solid var(--line);
 }
 
-.mobileLinks li {
-  animation: menuIn 0.6s var(--ease-out) both;
-  animation-delay: calc(var(--i) * 70ms + 80ms);
+.mobileMenu li {
+  border-bottom: 1px solid var(--line);
+  animation: menuIn 0.8s var(--ease) both;
+  animation-delay: calc(var(--i) * 60ms);
 }
 
-.mobileLinks a {
-  font-family: var(--font-d);
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: clamp(3rem, 16vw, 5rem);
-  line-height: 1;
-  display: inline-block;
+.mobileMenu a {
+  display: block;
+  padding: 18px 0;
+  font-size: 2.4rem;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  color: var(--muted);
 }
 
-.mobileLinks a[aria-current="page"] {
-  color: var(--gold);
+.mobileMenu a[aria-current="page"] {
+  color: var(--fg);
 }
 
 @keyframes menuIn {
   from {
     opacity: 0;
-    transform: translateX(-40px) skewX(-8deg);
+    transform: translateY(12px);
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 720px) {
   .links {
     display: none;
   }
 
-  .hamburger {
+  .toggle {
     display: block;
   }
 }

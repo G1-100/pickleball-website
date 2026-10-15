@@ -16,9 +16,8 @@ export default function CopyCode({ code, className }: { code: string; className?
   };
 
   return (
-    <button type="button" className={className} onClick={copy} data-copied={copied || undefined}>
-      <span>{code}</span>
-      <span aria-live="polite">{copied ? "Copied" : "Copy"}</span>
+    <button type="button" className={className} onClick={copy} aria-label={`Copy code ${code}`}>
+      <span aria-live="polite">{copied ? "Copied" : code}</span>
     </button>
   );
 }

@@ -85,52 +85,49 @@ export default function Page() {
   return (
     <>
       <section className={styles.hero}>
-        <div className={styles.inner}>
-          <h1 className={styles.heroTitle}>
-            <span>Events</span>
-          </h1>
-          <p className={styles.heroSub}>Tryouts, socials, and every weekly session where you can pick up a paddle.</p>
+        <p className="label">Events</p>
+        <h1 className={styles.title}>Where to find us.</h1>
+        <p className={styles.heroSub}>Tryouts, socials, and every weekly session where you can pick up a paddle.</p>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.grid}>
+          <p className="label">Coming up</p>
+          <div>
+            <ol className={styles.eventList}>
+              {upcoming.map((e, i) => (
+                <Reveal as="li" key={e.title} className={styles.event} delay={i * 0.08}>
+                  <div className={styles.date}>
+                    <span className="label">{e.month}</span>
+                    <span className={styles.day}>{e.day}</span>
+                  </div>
+                  <div>
+                    <h2 className={styles.eventTitle}>{e.title}</h2>
+                    <p className="label">{e.time}</p>
+                    <p className={styles.eventDesc}>{e.description}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </ol>
+            <p className={`label ${styles.more}`}>More events coming soon</p>
+          </div>
         </div>
       </section>
 
-      {/* UPCOMING */}
-      <section className={styles.upcoming}>
-        <div className={styles.inner}>
-          <h2 className={styles.sectionTitle}>Coming up</h2>
-          <ol className={styles.eventList}>
-            {upcoming.map((e, i) => (
-              <Reveal as="li" key={e.title} className={styles.event} delay={i * 0.08}>
-                <div className={styles.date} aria-hidden="true">
-                  <span className={styles.month}>{e.month}</span>
-                  <span className={styles.day}>{e.day}</span>
-                </div>
-                <div className={styles.eventBody}>
-                  <h3 className={styles.eventTitle}>{e.title}</h3>
-                  <p className={styles.eventTime}>{e.time}</p>
-                  <p className={styles.eventDesc}>{e.description}</p>
-                </div>
-              </Reveal>
-            ))}
-          </ol>
-          <p className={styles.more}>
-            <span className={styles.dots} aria-hidden="true"><i /><i /><i /></span>
-            More events coming soon
-          </p>
-        </div>
-      </section>
-
-      {/* WEEKLY */}
-      <section className={styles.weekly}>
-        <div className={styles.inner}>
+      <section className={styles.section}>
+        <div className={styles.grid}>
+          <p className="label">Every week</p>
           <div className={styles.weeklyHead}>
-            <h2 className={styles.weeklyTitle}>Every week</h2>
+            <h2 className={styles.h2}>Weekly schedule</h2>
             <ul className={styles.legend}>
               {recurring.map((r) => (
-                <li key={r.key} data-kind={r.key}>{r.title}</li>
+                <li key={r.key} className="label" data-kind={r.key}>{r.title}</li>
               ))}
             </ul>
           </div>
+        </div>
 
+        <div className={styles.calendarOuter}>
           <Reveal className={styles.calendarWrap}>
             <div
               className={styles.calendar}
@@ -140,7 +137,7 @@ export default function Page() {
             >
               <div className={styles.corner} />
               {days.map((d, i) => (
-                <div key={d} className={styles.dayHead} style={{ gridColumn: i + 2 }}>{d}</div>
+                <div key={d} className={`label ${styles.dayHead}`} style={{ gridColumn: i + 2 }}>{d}</div>
               ))}
               {hours.slice(0, -1).map((h, i) => (
                 <div key={h} className={styles.hour} style={{ gridRow: i + 2 }}>{fmt(h)}</div>
@@ -160,47 +157,41 @@ export default function Page() {
                       "--j": j,
                     } as React.CSSProperties}
                   >
-                    <span>{r.key === "club" ? "Club" : "Open rec"}</span>
+                    <span>{r.key === "club" ? "Club open play" : "Open rec"}</span>
                     <span className={styles.blockTime}>{fmt(s.start)}–{fmt(s.end)}</span>
                   </div>
                 ))
               )}
             </div>
           </Reveal>
-
-          <div className={styles.details}>
-            {recurring.map((r, i) => (
-              <Reveal as="article" key={r.key} className={styles.detail} data-kind={r.key} delay={i * 0.1}>
-                <h3 className={styles.detailTitle}>{r.title}</h3>
-                <dl className={styles.schedule}>
-                  {r.schedule.map((s) => (
-                    <div key={s.days}>
-                      <dt>{s.days}</dt>
-                      <dd>{s.time}</dd>
-                    </div>
-                  ))}
-                </dl>
-                <p>{r.description}</p>
-                <p className={styles.location}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="currentColor" />
-                    <circle cx="12" cy="10" r="2.6" fill="var(--loc-dot)" />
-                  </svg>
-                  {r.location}
-                </p>
-                {r.note && <p className={styles.note}>{r.note}</p>}
-              </Reveal>
-            ))}
-          </div>
-
-          <p className={styles.groupme}>
-            Locations and times can change last minute. Check{" "}
-            <a href="https://groupme.com/join_group/96038579/dmWghOg2" target="_blank" rel="noopener noreferrer">
-              our GroupMe
-            </a>{" "}
-            before you head over.
-          </p>
         </div>
+
+        <div className={styles.details}>
+          {recurring.map((r, i) => (
+            <Reveal as="article" key={r.key} className={styles.detail} data-kind={r.key} delay={i * 0.1}>
+              <h3 className={styles.detailTitle}>{r.title}</h3>
+              <dl className={styles.schedule}>
+                {r.schedule.map((s) => (
+                  <div key={s.days}>
+                    <dt>{s.days}</dt>
+                    <dd>{s.time}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p>{r.description}</p>
+              <p className="label">{r.location}</p>
+              {r.note && <p className={styles.note}>{r.note}</p>}
+            </Reveal>
+          ))}
+        </div>
+
+        <p className={styles.groupme}>
+          Locations and times can change last minute. Check{" "}
+          <a href="https://groupme.com/join_group/96038579/dmWghOg2" target="_blank" rel="noopener noreferrer">
+            our GroupMe
+          </a>{" "}
+          before you head over.
+        </p>
       </section>
     </>
   );

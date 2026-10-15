@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
+import Arrow from "@/components/Arrow";
 import Reveal from "@/components/Reveal";
-import TiltCard from "@/components/TiltCard";
 
 const pillars = [
   {
@@ -56,71 +56,54 @@ export default function Page() {
   return (
     <>
       <section className={styles.hero}>
-        <div className={styles.heroInner}>
-          <h1 className={styles.heroTitle}>What we play for</h1>
-          <ul className={styles.pillarNav}>
-            {pillars.map((p, i) => (
-              <li key={p.name} style={{ "--i": i } as React.CSSProperties}>
-                <a href={`#${p.name.toLowerCase()}`}>{p.name}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <p className="label">About</p>
+        <h1 className={styles.title}>Four things we play for.</h1>
       </section>
 
-      <section className={styles.mission} aria-label="Our mission">
-        {pillars.map((p, i) => (
-          <article
-            key={p.name}
-            id={p.name.toLowerCase()}
-            className={styles.pillar}
-            data-tone={i}
-            style={{ "--i": i } as React.CSSProperties}
-          >
+      <section className={styles.pillars} aria-label="Our mission">
+        {pillars.map((p) => (
+          <Reveal as="article" key={p.name} className={styles.pillar}>
+            <div className={styles.pillarImage}>
+              <Image src={p.image} alt={p.alt} fill sizes="(max-width: 760px) 100vw, 50vw" />
+            </div>
             <div className={styles.pillarText}>
               <h2 className={styles.pillarName}>{p.name}</h2>
               <p>{p.text}</p>
             </div>
-            <div className={styles.pillarImage}>
-              <Image src={p.image} alt={p.alt} fill sizes="(max-width: 900px) 90vw, 45vw" />
-            </div>
-          </article>
+          </Reveal>
         ))}
       </section>
 
       <section className={styles.team}>
-        <div className={styles.inner}>
-          <div className={styles.teamHead}>
-            <h2 className={styles.teamTitle}>The e-board</h2>
-            <p>The students who book the courts, run the socials, and keep the club going.</p>
+        <div className={styles.grid}>
+          <p className="label">E-board</p>
+          <div>
+            <h2 className={styles.h2}>The people running the club.</h2>
           </div>
-          <ul className={styles.eboard}>
-            {eboard.map((m, i) => (
-              <Reveal as="li" key={m.name} delay={(i % 4) * 0.06}>
-                <TiltCard className={styles.card}>
-                  <div className={styles.cardPhoto}>
-                    <Image src={m.photo} alt={m.name} fill sizes="(max-width: 640px) 45vw, 260px" />
-                  </div>
-                  <div className={styles.cardInfo}>
-                    <span className={styles.cardName}>{m.name}</span>
-                    <span className={styles.cardRole}>{m.role}</span>
-                  </div>
-                  <span className={styles.shine} aria-hidden="true" />
-                </TiltCard>
-              </Reveal>
-            ))}
-          </ul>
         </div>
+        <ul className={styles.eboard}>
+          {eboard.map((m, i) => (
+            <Reveal as="li" key={m.name} className={styles.member} delay={(i % 4) * 0.06}>
+              <div className={styles.photo}>
+                <Image src={m.photo} alt={m.name} fill sizes="(max-width: 760px) 50vw, 25vw" />
+              </div>
+              <div className={styles.memberInfo}>
+                <span>{m.name}</span>
+                <span className="label">{m.role}</span>
+              </div>
+            </Reveal>
+          ))}
+        </ul>
       </section>
 
       <section className={styles.competitive} id="competitive">
-        <div className={styles.inner}>
-          <h2 className={styles.compTitle}>Competitive team</h2>
+        <div className={styles.grid}>
+          <p className="label">Competitive team</p>
           {rosterAnnounced ? (
             <div className={styles.roster}>
               {roster.map((r) => (
                 <div key={r.team}>
-                  <h3>{r.team}</h3>
+                  <h3 className="label">{r.team}</h3>
                   <ul>
                     {r.players.map((name) => <li key={name}>{name}</li>)}
                   </ul>
@@ -128,17 +111,12 @@ export default function Page() {
               ))}
             </div>
           ) : (
-            <div className={styles.tbd}>
-              <div className={styles.scoreboard} aria-hidden="true">
-                <span>0</span>
-                <span>0</span>
-                <span>2</span>
-              </div>
-              <div>
-                <p className={styles.tbdLead}>This season&apos;s roster is still being decided.</p>
-                <p>Tryouts are posted on the events page. Come show us what you&apos;ve got.</p>
-                <Link href="/events" className="btn btn-solid">See tryout dates</Link>
-              </div>
+            <div>
+              <h2 className={styles.h2}>This season&apos;s roster is still being decided.</h2>
+              <p className={styles.sub}>Tryout dates are posted on the events page.</p>
+              <Link href="/events" className={`link ${styles.cta}`}>
+                See tryouts <Arrow />
+              </Link>
             </div>
           )}
         </div>

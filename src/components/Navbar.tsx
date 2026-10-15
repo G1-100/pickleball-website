@@ -9,6 +9,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/events", label: "Events" },
+  { href: "/join", label: "Join" },
 ];
 
 export default function Navbar() {
@@ -36,49 +37,36 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
-    <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ""} ${isOpen ? styles.menuOpen : ""}`}>
+    <header className={`${styles.navbar} ${scrolled || isOpen ? styles.solid : ""}`}>
       <nav className={styles.inner} aria-label="Main">
         <Link href="/" className={styles.brand} aria-label="Trojan Pickleball Club home">
-          <span className={styles.logo}>
-            <Image src="/images/club_logo.jpg" alt="" width={44} height={44} priority />
-          </span>
-          <span className={styles.wordmark}>
-            Trojan<br />Pickleball
-          </span>
+          <Image src="/images/club_logo.jpg" alt="" width={28} height={28} className={styles.logo} priority />
+          <span>Trojan Pickleball</span>
         </Link>
 
-        <div className={styles.links}>
+        <ul className={styles.links}>
           {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={styles.link}
-              aria-current={pathname === link.href ? "page" : undefined}
-            >
-              {link.label}
-            </Link>
+            <li key={link.href}>
+              <Link href={link.href} className={styles.link} aria-current={pathname === link.href ? "page" : undefined}>
+                {link.label}
+              </Link>
+            </li>
           ))}
-          <Link href="/join" className={styles.cta} aria-current={pathname === "/join" ? "page" : undefined}>
-            Join us
-          </Link>
-        </div>
+        </ul>
 
         <button
-          className={styles.hamburger}
+          className={`${styles.toggle} ${isOpen ? styles.toggleOpen : ""}`}
           onClick={() => setIsOpen((open) => !open)}
-          aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
         >
-          <span />
-          <span />
+          {isOpen ? "Close" : "Menu"}
         </button>
       </nav>
 
       <div id="mobile-menu" className={styles.mobileMenu} hidden={!isOpen}>
-        <div className={styles.mobileCourt} aria-hidden="true" />
-        <ul className={styles.mobileLinks}>
-          {[...links, { href: "/join", label: "Join us" }].map((link, i) => (
+        <ul>
+          {links.map((link, i) => (
             <li key={link.href} style={{ "--i": i } as React.CSSProperties}>
               <Link href={link.href} aria-current={pathname === link.href ? "page" : undefined}>
                 {link.label}
@@ -86,6 +74,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+        <p className="label">USC · Los Angeles</p>
       </div>
     </header>
   );

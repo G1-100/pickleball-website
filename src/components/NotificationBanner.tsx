@@ -5,28 +5,29 @@ import styles from "./NotificationBanner.module.css";
 export default function NotificationBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Slide in shortly after load so it doesn't compete with the hero animation.
+  // Appear once the visitor scrolls past the first screen, so it never covers the hero.
   useEffect(() => {
-    const t = setTimeout(() => setIsVisible(true), 2400);
-    return () => clearTimeout(t);
+    const onScroll = () => {
+      if (window.scrollY > window.innerHeight * 0.6) {
+        setIsVisible(true);
+        window.removeEventListener("scroll", onScroll);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   if (!isVisible) return null;
 
   return (
     <aside className={styles.banner} aria-label="Club links">
-      <p className={styles.message}>All our socials and sign-ups live on Linktree.</p>
-      <a
-        href="https://linktr.ee/trojan_pickleballl"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.linkButton}
-      >
-        Open Linktree
+      <a href="https://linktr.ee/trojan_pickleballl" target="_blank" rel="noopener noreferrer" className={styles.link}>
+        <span className={styles.dot} aria-hidden="true" />
+        All socials and sign-ups on Linktree
       </a>
-      <button onClick={() => setIsVisible(false)} className={styles.closeButton} aria-label="Dismiss">
-        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
-          <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="2" />
+      <button onClick={() => setIsVisible(false)} className={styles.close} aria-label="Dismiss">
+        <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+          <path d="M1 1l8 8M9 1L1 9" stroke="currentColor" strokeWidth="1.2" />
         </svg>
       </button>
     </aside>
